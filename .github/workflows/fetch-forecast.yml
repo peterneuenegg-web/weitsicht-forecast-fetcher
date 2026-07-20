@@ -1,0 +1,66 @@
+name: fetch-forecast
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+on:
+  schedule:
+    # ICON-CH2 läuft alle 3 h; Publikation mit Versatz. detect_latest_run() sucht
+    # den neuesten verfügbaren Lauf, exaktes Timing ist unkritisch. GitHub-Cron
+    # ist best-effort. Der Schedule beschickt NUR STAGE (Prod bewusst manuell,
+    # bis der Worker verifiziert ist — siehe unten).
+    - cron: "40 */3 * * *"
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "stage oder production"
+        required: true
+        default: "stage"
+        type: choice
+        options: [stage, production]
+      reference_datetime:
+        description: "ISO-Lauf (Backfill/Test) — leer = neuester"
+        required: false
+        default: ""
+      horizon_hours:
+        description: "Vorhersagehorizont in Stunden"
+        required: false
+        default: "72"
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"   # meteodata-lab: >=3.10,<3.13
+          cache: "pip"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch (stage)
+        if: github.event_name == 'schedule' || github.event.inputs.target == 'stage'
+        env:
+          FORECAST_INGEST_URL:   ${{ secrets.STAGE_FORECAST_INGEST_URL }}
+          FORECAST_INGEST_TOKEN: ${{ secrets.STAGE_FORECAST_INGEST_TOKEN }}
+          HEARTBEAT_URL:         ${{ secrets.STAGE_FORECAST_HEARTBEAT_URL }}
+          REFERENCE_DATETIME:    ${{ github.event.inputs.reference_datetime }}
+          HORIZON_HOURS:         ${{ github.event.inputs.horizon_hours || '72' }}
+          STEP_HOURS:            "1"
+        run: python fetch_forecast.py
+
+      # Prod läuft vorerst NUR bei manuellem Dispatch mit target=production.
+      # Sobald Stage verifiziert ist: hier `github.event_name == 'schedule' ||`
+      # ergänzen, damit Prod ebenfalls scheduled beschickt wird (wie kenda-fetcher).
+      - name: Fetch (production)
+        if: github.event.inputs.target == 'production'
+        env:
+          FORECAST_INGEST_URL:   ${{ secrets.PROD_FORECAST_INGEST_URL }}
+          FORECAST_INGEST_TOKEN: ${{ secrets.PROD_FORECAST_INGEST_TOKEN }}
+          HEARTBEAT_URL:         ${{ secrets.PROD_FORECAST_HEARTBEAT_URL }}
+          REFERENCE_DATETIME:    ${{ github.event.inputs.reference_datetime }}
+          HORIZON_HOURS:         ${{ github.event.inputs.horizon_hours || '72' }}
+          STEP_HOURS:            "1"
+        run: python fetch_forecast.py

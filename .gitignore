@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.grib2
+*.nc
+.cdsapirc
+.DS_Store

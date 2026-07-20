@@ -1,0 +1,14 @@
+# ICON-CH2 via offizielle MeteoSchweiz-Lib (bringt eccodes/earthkit/xarray/pyproj mit).
+# Python 3.10–3.12 (NICHT 3.13) — siehe Workflow.
+meteodata-lab==0.7.2
+
+# Direkt importiert im Worker (nicht zwingend von meteodata-lab garantiert):
+scipy==1.14.1          # cKDTree für Nearest-Cell
+requests==2.32.3
+
+# CAMS (fetch_cams.py):
+cdsapi==0.7.4          # ADS/CDS-API-Client
+netCDF4==1.7.2         # NetCDF-Backend für xarray
+
+# numpy/xarray kommen transitiv über meteodata-lab in kompatibler Version —
+# bewusst NICHT gepinnt, um Resolver-Konflikte mit meteodata-lab 0.7.2 zu vermeiden.

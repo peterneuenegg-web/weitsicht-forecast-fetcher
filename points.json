@@ -1,0 +1,3644 @@
+{
+ "_comment": "GENERIERT von cron/generate_points.php (bzw. Bootstrap gen_points.js). Nicht von Hand editieren — via cron-runner.php?job=generate_points regenerieren.",
+ "generated_at": "2026-07-14T13:07:19.547Z",
+ "sources": {
+  "regions_geojson": "my.wetteralarm.ch/v7/maps/meteo.geojson",
+  "livecams": "my.wetteralarm.ch/v9/maps/livecams.json (Snapshot)"
+ },
+ "band_thresholds": {
+  "low_max": 900,
+  "mid_max": 1500
+ },
+ "nominal_band_elev": {
+  "low": 600,
+  "mid": 1200,
+  "high": 2000
+ },
+ "stats": {
+  "regions_total": 172,
+  "cams_usable": 384,
+  "cams_assigned": 363,
+  "cams_outside_polygons": 21,
+  "regions_with_webcams": 109,
+  "regions_fallback": 63,
+  "webcam_points": 157,
+  "fallback_points": 63,
+  "total_points": 220
+ },
+ "points": [
+  {
+   "point_id": "r1_low",
+   "region_id": 1,
+   "region_name": {
+    "de": "Aare-/Gürbetal",
+    "fr": "Aare-/Gürbetal",
+    "it": "Aare-/Gürbetal"
+   },
+   "band": "low",
+   "lat": 46.91712,
+   "lon": 7.495,
+   "elev": 509,
+   "source": "webcam",
+   "webcam_id": 624,
+   "webcam_label": "Bern Airport",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r2_low",
+   "region_id": 2,
+   "region_name": {
+    "de": "Brugg/Baden",
+    "fr": "Brugg/Baden",
+    "it": "Brugg/Baden"
+   },
+   "band": "low",
+   "lat": 47.47017,
+   "lon": 8.28251,
+   "elev": 569,
+   "source": "webcam",
+   "webcam_id": 165,
+   "webcam_label": "Turm Baldegg",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r3_low",
+   "region_id": 3,
+   "region_name": {
+    "de": "Ägerisee",
+    "fr": "Ägerisee",
+    "it": "Ägerisee"
+   },
+   "band": "low",
+   "lat": 47.18187,
+   "lon": 8.58523,
+   "elev": 802,
+   "source": "webcam",
+   "webcam_id": 294,
+   "webcam_label": "Menzingen",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r5_low",
+   "region_id": 5,
+   "region_name": {
+    "de": "Agglo BE",
+    "fr": "Agglo BE",
+    "it": "Agglo BE"
+   },
+   "band": "low",
+   "lat": 46.95951,
+   "lon": 7.46649,
+   "elev": 570,
+   "source": "webcam",
+   "webcam_id": 453,
+   "webcam_label": "Bern BERNEXPO",
+   "cams_in_band": 4
+  },
+  {
+   "point_id": "r6_center",
+   "region_id": 6,
+   "region_name": {
+    "de": "Agglo GE",
+    "fr": "Agglo GE",
+    "it": "Agglo GE"
+   },
+   "band": null,
+   "lat": 46.19816,
+   "lon": 6.10196,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r7_low",
+   "region_id": 7,
+   "region_name": {
+    "de": "Agglo Lausanne",
+    "fr": "Agglo Lausanne",
+    "it": "Agglo Lausanne"
+   },
+   "band": "low",
+   "lat": 46.53682,
+   "lon": 6.57892,
+   "elev": 402,
+   "source": "webcam",
+   "webcam_id": 187,
+   "webcam_label": "Renens Quai Ouest",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r10_low",
+   "region_id": 10,
+   "region_name": {
+    "de": "Agglo Winterthur",
+    "fr": "Agglo Winterthur",
+    "it": "Agglo Winterthur"
+   },
+   "band": "low",
+   "lat": 47.50377,
+   "lon": 8.72716,
+   "elev": 440,
+   "source": "webcam",
+   "webcam_id": 199,
+   "webcam_label": "Winterthur Roter Turm",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r76_high",
+   "region_id": 76,
+   "region_name": {
+    "de": "Samnaun",
+    "fr": "Samnaun",
+    "it": "Samnaun"
+   },
+   "band": "high",
+   "lat": 46.94051,
+   "lon": 10.36037,
+   "elev": 1865,
+   "source": "webcam",
+   "webcam_id": 836,
+   "webcam_label": "Samnaun",
+   "cams_in_band": 3
+  },
+  {
+   "point_id": "r11_low",
+   "region_id": 11,
+   "region_name": {
+    "de": "Stadt ZH",
+    "fr": "Stadt ZH",
+    "it": "Stadt ZH"
+   },
+   "band": "low",
+   "lat": 47.3823,
+   "lon": 8.54024,
+   "elev": 417,
+   "source": "webcam",
+   "webcam_id": 42,
+   "webcam_label": "Zürich West",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r12_low",
+   "region_id": 12,
+   "region_name": {
+    "de": "AI",
+    "fr": "AI",
+    "it": "AI"
+   },
+   "band": "low",
+   "lat": 47.31936,
+   "lon": 9.32844,
+   "elev": 890,
+   "source": "webcam",
+   "webcam_id": 646,
+   "webcam_label": "Kronberg Talstation",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r12_high",
+   "region_id": 12,
+   "region_name": {
+    "de": "AI",
+    "fr": "AI",
+    "it": "AI"
+   },
+   "band": "high",
+   "lat": 47.29149,
+   "lon": 9.32944,
+   "elev": 1663,
+   "source": "webcam",
+   "webcam_id": 346,
+   "webcam_label": "Kronberg",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r13_low",
+   "region_id": 13,
+   "region_name": {
+    "de": "Aigle",
+    "fr": "Aigle",
+    "it": "Aigle"
+   },
+   "band": "low",
+   "lat": 46.31702,
+   "lon": 6.9784,
+   "elev": 435,
+   "source": "webcam",
+   "webcam_id": 68,
+   "webcam_label": "Aigle",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r13_mid",
+   "region_id": 13,
+   "region_name": {
+    "de": "Aigle",
+    "fr": "Aigle",
+    "it": "Aigle"
+   },
+   "band": "mid",
+   "lat": 46.34156,
+   "lon": 7.02098,
+   "elev": 1210,
+   "source": "webcam",
+   "webcam_id": 265,
+   "webcam_label": "Leysin Tobogganing Park",
+   "cams_in_band": 8
+  },
+  {
+   "point_id": "r13_high",
+   "region_id": 13,
+   "region_name": {
+    "de": "Aigle",
+    "fr": "Aigle",
+    "it": "Aigle"
+   },
+   "band": "high",
+   "lat": 46.33361,
+   "lon": 7.12105,
+   "elev": 1985,
+   "source": "webcam",
+   "webcam_id": 139,
+   "webcam_label": "Les Diablerets Meilleret",
+   "cams_in_band": 10
+  },
+  {
+   "point_id": "r14_low",
+   "region_id": 14,
+   "region_name": {
+    "de": "Ajoie",
+    "fr": "Ajoie",
+    "it": "Ajoie"
+   },
+   "band": "low",
+   "lat": 47.41524,
+   "lon": 7.07575,
+   "elev": 423,
+   "source": "webcam",
+   "webcam_id": 118,
+   "webcam_label": "Porrentruy",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r15_high",
+   "region_id": 15,
+   "region_name": {
+    "de": "Albula",
+    "fr": "Albula",
+    "it": "Albula"
+   },
+   "band": "high",
+   "lat": 46.58831,
+   "lon": 9.77728,
+   "elev": 1790,
+   "source": "webcam",
+   "webcam_id": 82,
+   "webcam_label": "Preda Albulatunnel",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r16_mid",
+   "region_id": 16,
+   "region_name": {
+    "de": "AR Hinterland",
+    "fr": "AR Hinterland",
+    "it": "AR Hinterland"
+   },
+   "band": "mid",
+   "lat": 47.2539,
+   "lon": 9.31997,
+   "elev": 1350,
+   "source": "webcam",
+   "webcam_id": 323,
+   "webcam_label": "Säntis Schwägalp",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r17_low",
+   "region_id": 17,
+   "region_name": {
+    "de": "AR Vorderland",
+    "fr": "AR Vorderland",
+    "it": "AR Vorderland"
+   },
+   "band": "low",
+   "lat": 47.44008,
+   "lon": 9.56102,
+   "elev": 748,
+   "source": "webcam",
+   "webcam_id": 342,
+   "webcam_label": "Wolfhalden Geflügelhof Schönenbühl",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r18_center",
+   "region_id": 18,
+   "region_name": {
+    "de": "Bez. Sissach",
+    "fr": "Bez. Sissach",
+    "it": "Bez. Sissach"
+   },
+   "band": null,
+   "lat": 47.48991,
+   "lon": 7.84659,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r19_high",
+   "region_id": 19,
+   "region_name": {
+    "de": "Bergell",
+    "fr": "Val Bregaglia",
+    "it": "Val Bregaglia"
+   },
+   "band": "high",
+   "lat": 46.33664,
+   "lon": 9.64313,
+   "elev": 2162,
+   "source": "webcam",
+   "webcam_id": 373,
+   "webcam_label": "Albigna",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r20_mid",
+   "region_id": 20,
+   "region_name": {
+    "de": "Courtelary",
+    "fr": "Courtelary",
+    "it": "Courtelary"
+   },
+   "band": "mid",
+   "lat": 47.16381,
+   "lon": 6.99008,
+   "elev": 1288,
+   "source": "webcam",
+   "webcam_id": 308,
+   "webcam_label": "Mont-Soleil",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r21_low",
+   "region_id": 21,
+   "region_name": {
+    "de": "Bischofszell/Arbon",
+    "fr": "Bischofszell/Arbon",
+    "it": "Bischofszell/Arbon"
+   },
+   "band": "low",
+   "lat": 47.50962,
+   "lon": 9.26164,
+   "elev": 506,
+   "source": "webcam",
+   "webcam_id": 268,
+   "webcam_label": "Sitterdorf Flugplatz",
+   "cams_in_band": 3
+  },
+  {
+   "point_id": "r22_center",
+   "region_id": 22,
+   "region_name": {
+    "de": "Broyetal/Payerne",
+    "fr": "La Broye/Payerne",
+    "it": "La Broye/Payerne"
+   },
+   "band": null,
+   "lat": 46.83518,
+   "lon": 6.92424,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r23_mid",
+   "region_id": 23,
+   "region_name": {
+    "de": "Ceresio",
+    "fr": "Ceresio",
+    "it": "Ceresio"
+   },
+   "band": "mid",
+   "lat": 45.97724,
+   "lon": 8.94676,
+   "elev": 912,
+   "source": "webcam",
+   "webcam_id": 220,
+   "webcam_label": "Lugano Monte San Salvatore",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r24_low",
+   "region_id": 24,
+   "region_name": {
+    "de": "Churer Rheintal",
+    "fr": "Churer Rheintal",
+    "it": "Churer Rheintal"
+   },
+   "band": "low",
+   "lat": 46.86113,
+   "lon": 9.54172,
+   "elev": 607,
+   "source": "webcam",
+   "webcam_id": 132,
+   "webcam_label": "Chur",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r25_low",
+   "region_id": 25,
+   "region_name": {
+    "de": "Delémont",
+    "fr": "Delémont",
+    "it": "Delémont"
+   },
+   "band": "low",
+   "lat": 47.36221,
+   "lon": 7.3498,
+   "elev": 505,
+   "source": "webcam",
+   "webcam_id": 120,
+   "webcam_label": "Delémont",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r25_mid",
+   "region_id": 25,
+   "region_name": {
+    "de": "Delémont",
+    "fr": "Delémont",
+    "it": "Delémont"
+   },
+   "band": "mid",
+   "lat": 47.38793,
+   "lon": 7.23138,
+   "elev": 997,
+   "source": "webcam",
+   "webcam_id": 167,
+   "webcam_label": "Les Ordons",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r26_high",
+   "region_id": 26,
+   "region_name": {
+    "de": "Domleschg",
+    "fr": "Domleschg",
+    "it": "Domleschg"
+   },
+   "band": "high",
+   "lat": 46.72189,
+   "lon": 9.51112,
+   "elev": 2323,
+   "source": "webcam",
+   "webcam_id": 38,
+   "webcam_label": "Lenzerheide Piz Scalottas",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r27_high",
+   "region_id": 27,
+   "region_name": {
+    "de": "Engstligen-/Kandertal",
+    "fr": "Engstligen-/Kandertal",
+    "it": "Engstligen-/Kandertal"
+   },
+   "band": "high",
+   "lat": 46.50609,
+   "lon": 7.54665,
+   "elev": 1946,
+   "source": "webcam",
+   "webcam_id": 417,
+   "webcam_label": "Adelboden Tschentenalp",
+   "cams_in_band": 6
+  },
+  {
+   "point_id": "r28_low",
+   "region_id": 28,
+   "region_name": {
+    "de": "Entlebuch",
+    "fr": "Entlebuch",
+    "it": "Entlebuch"
+   },
+   "band": "low",
+   "lat": 47.06642,
+   "lon": 8.07452,
+   "elev": 655,
+   "source": "webcam",
+   "webcam_id": 78,
+   "webcam_label": "Wolhusen",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r28_mid",
+   "region_id": 28,
+   "region_name": {
+    "de": "Entlebuch",
+    "fr": "Entlebuch",
+    "it": "Entlebuch"
+   },
+   "band": "mid",
+   "lat": 46.83515,
+   "lon": 7.90623,
+   "elev": 1472,
+   "source": "webcam",
+   "webcam_id": 174,
+   "webcam_label": "Marbachegg",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r30_low",
+   "region_id": 30,
+   "region_name": {
+    "de": "Freiberge",
+    "fr": "Franches Montagnes",
+    "it": "Franches Montagnes"
+   },
+   "band": "low",
+   "lat": 47.36742,
+   "lon": 7.16812,
+   "elev": 497,
+   "source": "webcam",
+   "webcam_id": 119,
+   "webcam_label": "Saint-Ursanne",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r30_mid",
+   "region_id": 30,
+   "region_name": {
+    "de": "Freiberge",
+    "fr": "Franches Montagnes",
+    "it": "Franches Montagnes"
+   },
+   "band": "mid",
+   "lat": 47.16731,
+   "lon": 6.9028,
+   "elev": 1025,
+   "source": "webcam",
+   "webcam_id": 631,
+   "webcam_label": "Les Bois Golf Club",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r31_low",
+   "region_id": 31,
+   "region_name": {
+    "de": "Frauenfeld",
+    "fr": "Frauenfeld",
+    "it": "Frauenfeld"
+   },
+   "band": "low",
+   "lat": 47.5503,
+   "lon": 8.98744,
+   "elev": 601,
+   "source": "webcam",
+   "webcam_id": 32,
+   "webcam_label": "Lustdorf",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r34_low",
+   "region_id": 34,
+   "region_name": {
+    "de": "Fricktal",
+    "fr": "Fricktal",
+    "it": "Fricktal"
+   },
+   "band": "low",
+   "lat": 47.5089,
+   "lon": 7.95035,
+   "elev": 543,
+   "source": "webcam",
+   "webcam_id": 136,
+   "webcam_label": "Schupfart Flugplatz Fricktal",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r35_mid",
+   "region_id": 35,
+   "region_name": {
+    "de": "Grosstal",
+    "fr": "Grosstal",
+    "it": "Grosstal"
+   },
+   "band": "mid",
+   "lat": 46.94093,
+   "lon": 9.00005,
+   "elev": 1300,
+   "source": "webcam",
+   "webcam_id": 247,
+   "webcam_label": "Braunwald Märchenhotel",
+   "cams_in_band": 4
+  },
+  {
+   "point_id": "r35_high",
+   "region_id": 35,
+   "region_name": {
+    "de": "Grosstal",
+    "fr": "Grosstal",
+    "it": "Grosstal"
+   },
+   "band": "high",
+   "lat": 46.95564,
+   "lon": 8.98568,
+   "elev": 1904,
+   "source": "webcam",
+   "webcam_id": 75,
+   "webcam_label": "Braunwald Gumen",
+   "cams_in_band": 3
+  },
+  {
+   "point_id": "r36_mid",
+   "region_id": 36,
+   "region_name": {
+    "de": "Glarus",
+    "fr": "Glarus",
+    "it": "Glarus"
+   },
+   "band": "mid",
+   "lat": 47.02722,
+   "lon": 9.10346,
+   "elev": 1455,
+   "source": "webcam",
+   "webcam_id": 1390,
+   "webcam_label": "Ennenda Aeugsten",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r37_mid",
+   "region_id": 37,
+   "region_name": {
+    "de": "Goms",
+    "fr": "Goms",
+    "it": "Goms"
+   },
+   "band": "mid",
+   "lat": 46.4059,
+   "lon": 8.13409,
+   "elev": 1060,
+   "source": "webcam",
+   "webcam_id": 404,
+   "webcam_label": "Fiesch",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r37_high",
+   "region_id": 37,
+   "region_name": {
+    "de": "Goms",
+    "fr": "Goms",
+    "it": "Goms"
+   },
+   "band": "high",
+   "lat": 46.44089,
+   "lon": 8.1663,
+   "elev": 2060,
+   "source": "webcam",
+   "webcam_id": 334,
+   "webcam_label": "Bellwald Richinen",
+   "cams_in_band": 5
+  },
+  {
+   "point_id": "r38_low",
+   "region_id": 38,
+   "region_name": {
+    "de": "Haslital",
+    "fr": "Haslital",
+    "it": "Haslital"
+   },
+   "band": "low",
+   "lat": 46.71453,
+   "lon": 8.18301,
+   "elev": 846,
+   "source": "webcam",
+   "webcam_id": 469,
+   "webcam_label": "Reichenbachfall",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r38_mid",
+   "region_id": 38,
+   "region_name": {
+    "de": "Haslital",
+    "fr": "Haslital",
+    "it": "Haslital"
+   },
+   "band": "mid",
+   "lat": 46.74741,
+   "lon": 8.1818,
+   "elev": 1094,
+   "source": "webcam",
+   "webcam_id": 620,
+   "webcam_label": "Meiringen-Hasliberg Rehaklinik",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r38_high",
+   "region_id": 38,
+   "region_name": {
+    "de": "Haslital",
+    "fr": "Haslital",
+    "it": "Haslital"
+   },
+   "band": "high",
+   "lat": 46.57142,
+   "lon": 8.33123,
+   "elev": 1950,
+   "source": "webcam",
+   "webcam_id": 465,
+   "webcam_label": "Grimsel Hospiz",
+   "cams_in_band": 7
+  },
+  {
+   "point_id": "r39_low",
+   "region_id": 39,
+   "region_name": {
+    "de": "Wil, TG-Süd",
+    "fr": "Wil, TG-Süd",
+    "it": "Wil, TG-Süd"
+   },
+   "band": "low",
+   "lat": 47.47868,
+   "lon": 9.04953,
+   "elev": 712,
+   "source": "webcam",
+   "webcam_id": 76,
+   "webcam_label": "Wiler Turm",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r40_mid",
+   "region_id": 40,
+   "region_name": {
+    "de": "Bödeli/Brienzersee",
+    "fr": "Bödeli/Brienzersee",
+    "it": "Bödeli/Brienzersee"
+   },
+   "band": "mid",
+   "lat": 46.69731,
+   "lon": 7.85158,
+   "elev": 1321,
+   "source": "webcam",
+   "webcam_id": 202,
+   "webcam_label": "Interlaken Harder Kulm",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r40_high",
+   "region_id": 40,
+   "region_name": {
+    "de": "Bödeli/Brienzersee",
+    "fr": "Bödeli/Brienzersee",
+    "it": "Bödeli/Brienzersee"
+   },
+   "band": "high",
+   "lat": 46.70974,
+   "lon": 8.04152,
+   "elev": 1914,
+   "source": "webcam",
+   "webcam_id": 321,
+   "webcam_label": "Axalp",
+   "cams_in_band": 4
+  },
+  {
+   "point_id": "r41_mid",
+   "region_id": 41,
+   "region_name": {
+    "de": "Jungfrauregion",
+    "fr": "Jungfrauregion",
+    "it": "Jungfrauregion"
+   },
+   "band": "mid",
+   "lat": 46.60881,
+   "lon": 7.91597,
+   "elev": 1256,
+   "source": "webcam",
+   "webcam_id": 9,
+   "webcam_label": "Wengen Hotel Bellevue",
+   "cams_in_band": 7
+  },
+  {
+   "point_id": "r41_high",
+   "region_id": 41,
+   "region_name": {
+    "de": "Jungfrauregion",
+    "fr": "Jungfrauregion",
+    "it": "Jungfrauregion"
+   },
+   "band": "high",
+   "lat": 46.65837,
+   "lon": 8.06511,
+   "elev": 1970,
+   "source": "webcam",
+   "webcam_id": 492,
+   "webcam_label": "Grindelwald First Schreckfeld",
+   "cams_in_band": 13
+  },
+  {
+   "point_id": "r42_low",
+   "region_id": 42,
+   "region_name": {
+    "de": "La Côte/Nyon",
+    "fr": "La Côte/Nyon",
+    "it": "La Côte/Nyon"
+   },
+   "band": "low",
+   "lat": 46.38063,
+   "lon": 6.24136,
+   "elev": 386,
+   "source": "webcam",
+   "webcam_id": 102,
+   "webcam_label": "Nyon",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r4_low",
+   "region_id": 4,
+   "region_name": {
+    "de": "Agglo BS",
+    "fr": "Agglo BS",
+    "it": "Agglo BS"
+   },
+   "band": "low",
+   "lat": 47.5677,
+   "lon": 7.62659,
+   "elev": 300,
+   "source": "webcam",
+   "webcam_id": 123,
+   "webcam_label": "Basel Gymnasium Bäumlihof",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r8_low",
+   "region_id": 8,
+   "region_name": {
+    "de": "Agglo LU",
+    "fr": "Agglo LU",
+    "it": "Agglo LU"
+   },
+   "band": "low",
+   "lat": 47.02111,
+   "lon": 8.31536,
+   "elev": 488,
+   "source": "webcam",
+   "webcam_id": 389,
+   "webcam_label": "Horw",
+   "cams_in_band": 5
+  },
+  {
+   "point_id": "r118_center",
+   "region_id": 118,
+   "region_name": {
+    "de": "Centovalli/Onsernone",
+    "fr": "Centovalli/Onsernone",
+    "it": "Centovalli/Onsernone"
+   },
+   "band": null,
+   "lat": 46.19998,
+   "lon": 8.61189,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r84_center",
+   "region_id": 84,
+   "region_name": {
+    "de": "SG Rheintal",
+    "fr": "SG Rheintal",
+    "it": "SG Rheintal"
+   },
+   "band": null,
+   "lat": 47.36379,
+   "lon": 9.56742,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r32_low",
+   "region_id": 32,
+   "region_name": {
+    "de": "ob. Freiamt",
+    "fr": "ob. Freiamt",
+    "it": "ob. Freiamt"
+   },
+   "band": "low",
+   "lat": 47.16523,
+   "lon": 8.40382,
+   "elev": 420,
+   "source": "webcam",
+   "webcam_id": 696,
+   "webcam_label": "Oberrüti",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r9_center",
+   "region_id": 9,
+   "region_name": {
+    "de": "Agglo St. Gallen",
+    "fr": "Agglo St. Gallen",
+    "it": "Agglo St. Gallen"
+   },
+   "band": null,
+   "lat": 47.44672,
+   "lon": 9.32984,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r29_mid",
+   "region_id": 29,
+   "region_name": {
+    "de": "Val d'Entremont",
+    "fr": "Val d'Entremont",
+    "it": "Val d'Entremont"
+   },
+   "band": "mid",
+   "lat": 46.05598,
+   "lon": 6.99508,
+   "elev": 1300,
+   "source": "webcam",
+   "webcam_id": 240,
+   "webcam_label": "Trient",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r29_high",
+   "region_id": 29,
+   "region_name": {
+    "de": "Val d'Entremont",
+    "fr": "Val d'Entremont",
+    "it": "Val d'Entremont"
+   },
+   "band": "high",
+   "lat": 45.98231,
+   "lon": 7.14698,
+   "elev": 2045,
+   "source": "webcam",
+   "webcam_id": 310,
+   "webcam_label": "La Vuardette",
+   "cams_in_band": 5
+  },
+  {
+   "point_id": "r43_center",
+   "region_id": 43,
+   "region_name": {
+    "de": "La Glâne",
+    "fr": "La Glâne",
+    "it": "La Glâne"
+   },
+   "band": null,
+   "lat": 46.67114,
+   "lon": 6.94479,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r44_low",
+   "region_id": 44,
+   "region_name": {
+    "de": "Lago Maggiore",
+    "fr": "Lago Maggiore",
+    "it": "Lago Maggiore"
+   },
+   "band": "low",
+   "lat": 46.18869,
+   "lon": 8.83953,
+   "elev": 484,
+   "source": "webcam",
+   "webcam_id": 408,
+   "webcam_label": "Contra Hotel San Bernardo",
+   "cams_in_band": 6
+  },
+  {
+   "point_id": "r44_high",
+   "region_id": 44,
+   "region_name": {
+    "de": "Lago Maggiore",
+    "fr": "Lago Maggiore",
+    "it": "Lago Maggiore"
+   },
+   "band": "high",
+   "lat": 46.10387,
+   "lon": 8.86597,
+   "elev": 1980,
+   "source": "webcam",
+   "webcam_id": 638,
+   "webcam_label": "Monte Tamaro",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r45_center",
+   "region_id": 45,
+   "region_name": {
+    "de": "Davos",
+    "fr": "Davos",
+    "it": "Davos"
+   },
+   "band": null,
+   "lat": 46.76065,
+   "lon": 9.84486,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r46_low",
+   "region_id": 46,
+   "region_name": {
+    "de": "Lavaux",
+    "fr": "Lavaux",
+    "it": "Lavaux"
+   },
+   "band": "low",
+   "lat": 46.48154,
+   "lon": 6.78066,
+   "elev": 565,
+   "source": "webcam",
+   "webcam_id": 115,
+   "webcam_label": "Chexbres",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r47_low",
+   "region_id": 47,
+   "region_name": {
+    "de": "Le Littoral",
+    "fr": "Le Littoral",
+    "it": "Le Littoral"
+   },
+   "band": "low",
+   "lat": 46.99694,
+   "lon": 6.93745,
+   "elev": 475,
+   "source": "webcam",
+   "webcam_id": 55,
+   "webcam_label": "Neuchâtel",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r47_mid",
+   "region_id": 47,
+   "region_name": {
+    "de": "Le Littoral",
+    "fr": "Le Littoral",
+    "it": "Le Littoral"
+   },
+   "band": "mid",
+   "lat": 47.02602,
+   "lon": 6.95816,
+   "elev": 1080,
+   "source": "webcam",
+   "webcam_id": 51,
+   "webcam_label": "Neuchâtel Chaumont",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r48_mid",
+   "region_id": 48,
+   "region_name": {
+    "de": "Lenzerheide",
+    "fr": "Lenzerheide",
+    "it": "Lenzerheide"
+   },
+   "band": "mid",
+   "lat": 46.69284,
+   "lon": 9.55612,
+   "elev": 1400,
+   "source": "webcam",
+   "webcam_id": 89,
+   "webcam_label": "Lenzerheide Roland Arena",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r48_high",
+   "region_id": 48,
+   "region_name": {
+    "de": "Lenzerheide",
+    "fr": "Lenzerheide",
+    "it": "Lenzerheide"
+   },
+   "band": "high",
+   "lat": 46.81235,
+   "lon": 9.50278,
+   "elev": 1947,
+   "source": "webcam",
+   "webcam_id": 129,
+   "webcam_label": "Brambrüesch",
+   "cams_in_band": 6
+  },
+  {
+   "point_id": "r49_center",
+   "region_id": 49,
+   "region_name": {
+    "de": "Leventina",
+    "fr": "Leventina",
+    "it": "Leventina"
+   },
+   "band": null,
+   "lat": 46.41188,
+   "lon": 8.84012,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r50_center",
+   "region_id": 50,
+   "region_name": {
+    "de": "Amt Willisau",
+    "fr": "Amt Willisau",
+    "it": "Amt Willisau"
+   },
+   "band": null,
+   "lat": 47.14154,
+   "lon": 7.95567,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r51_center",
+   "region_id": 51,
+   "region_name": {
+    "de": "Maggiatal",
+    "fr": "Valle Maggia",
+    "it": "Valle Maggia"
+   },
+   "band": null,
+   "lat": 46.26464,
+   "lon": 8.70439,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r59_center",
+   "region_id": 59,
+   "region_name": {
+    "de": "Muotathal",
+    "fr": "Muotathal",
+    "it": "Muotathal"
+   },
+   "band": null,
+   "lat": 46.96972,
+   "lon": 8.86423,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r52_mid",
+   "region_id": 52,
+   "region_name": {
+    "de": "Martigny/Conthey",
+    "fr": "Martigny/Conthey",
+    "it": "Martigny/Conthey"
+   },
+   "band": "mid",
+   "lat": 46.2799,
+   "lon": 7.21462,
+   "elev": 1462,
+   "source": "webcam",
+   "webcam_id": 289,
+   "webcam_label": "Refuge du Lac de Derborence",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r52_high",
+   "region_id": 52,
+   "region_name": {
+    "de": "Martigny/Conthey",
+    "fr": "Martigny/Conthey",
+    "it": "Martigny/Conthey"
+   },
+   "band": "high",
+   "lat": 46.2062,
+   "lon": 7.13278,
+   "elev": 2104,
+   "source": "webcam",
+   "webcam_id": 641,
+   "webcam_label": "Ovronnaz Bougnonne",
+   "cams_in_band": 5
+  },
+  {
+   "point_id": "r53_mid",
+   "region_id": 53,
+   "region_name": {
+    "de": "Mattertal",
+    "fr": "Mattertal",
+    "it": "Mattertal"
+   },
+   "band": "mid",
+   "lat": 46.08748,
+   "lon": 7.77904,
+   "elev": 1426,
+   "source": "webcam",
+   "webcam_id": 686,
+   "webcam_label": "Randa Golfclub Matterhorn",
+   "cams_in_band": 3
+  },
+  {
+   "point_id": "r53_high",
+   "region_id": 53,
+   "region_name": {
+    "de": "Mattertal",
+    "fr": "Mattertal",
+    "it": "Mattertal"
+   },
+   "band": "high",
+   "lat": 46.19634,
+   "lon": 7.80077,
+   "elev": 1992,
+   "source": "webcam",
+   "webcam_id": 1400,
+   "webcam_label": "St. Niklaus Jungen",
+   "cams_in_band": 16
+  },
+  {
+   "point_id": "r54_center",
+   "region_id": 54,
+   "region_name": {
+    "de": "Mendrisiotto",
+    "fr": "Mendrisiotto",
+    "it": "Mendrisiotto"
+   },
+   "band": null,
+   "lat": 45.87578,
+   "lon": 8.99486,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r55_center",
+   "region_id": 55,
+   "region_name": {
+    "de": "Misox",
+    "fr": "Mesolcina",
+    "it": "Mesolcina"
+   },
+   "band": null,
+   "lat": 46.27346,
+   "lon": 9.19163,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r56_center",
+   "region_id": 56,
+   "region_name": {
+    "de": "BE Mittelland",
+    "fr": "BE Mittelland",
+    "it": "BE Mittelland"
+   },
+   "band": null,
+   "lat": 47.06611,
+   "lon": 7.47355,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r57_low",
+   "region_id": 57,
+   "region_name": {
+    "de": "Monthey/St. Maurice",
+    "fr": "Monthey/St. Maurice",
+    "it": "Monthey/St. Maurice"
+   },
+   "band": "low",
+   "lat": 46.13353,
+   "lon": 7.04256,
+   "elev": 452,
+   "source": "webcam",
+   "webcam_id": 244,
+   "webcam_label": "Vernayaz",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r57_mid",
+   "region_id": 57,
+   "region_name": {
+    "de": "Monthey/St. Maurice",
+    "fr": "Monthey/St. Maurice",
+    "it": "Monthey/St. Maurice"
+   },
+   "band": "mid",
+   "lat": 46.1797,
+   "lon": 6.87082,
+   "elev": 1055,
+   "source": "webcam",
+   "webcam_id": 359,
+   "webcam_label": "Champéry",
+   "cams_in_band": 3
+  },
+  {
+   "point_id": "r57_high",
+   "region_id": 57,
+   "region_name": {
+    "de": "Monthey/St. Maurice",
+    "fr": "Monthey/St. Maurice",
+    "it": "Monthey/St. Maurice"
+   },
+   "band": "high",
+   "lat": 46.06802,
+   "lon": 6.93517,
+   "elev": 1930,
+   "source": "webcam",
+   "webcam_id": 236,
+   "webcam_label": "Lac d’Émosson",
+   "cams_in_band": 6
+  },
+  {
+   "point_id": "r58_center",
+   "region_id": 58,
+   "region_name": {
+    "de": "Val Müstair",
+    "fr": "Val Müstair",
+    "it": "Val Müstair"
+   },
+   "band": null,
+   "lat": 46.60385,
+   "lon": 10.36919,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r61_mid",
+   "region_id": 61,
+   "region_name": {
+    "de": "Val d'Hérens",
+    "fr": "Val d'Hérens",
+    "it": "Val d'Hérens"
+   },
+   "band": "mid",
+   "lat": 46.22956,
+   "lon": 7.42376,
+   "elev": 1236,
+   "source": "webcam",
+   "webcam_id": 459,
+   "webcam_label": "Nax",
+   "cams_in_band": 3
+  },
+  {
+   "point_id": "r61_high",
+   "region_id": 61,
+   "region_name": {
+    "de": "Val d'Hérens",
+    "fr": "Val d'Hérens",
+    "it": "Val d'Hérens"
+   },
+   "band": "high",
+   "lat": 46.1759,
+   "lon": 7.37996,
+   "elev": 1951,
+   "source": "webcam",
+   "webcam_id": 423,
+   "webcam_label": "Thyon Snowpark",
+   "cams_in_band": 6
+  },
+  {
+   "point_id": "r62_low",
+   "region_id": 62,
+   "region_name": {
+    "de": "NW",
+    "fr": "NW",
+    "it": "NW"
+   },
+   "band": "low",
+   "lat": 46.96005,
+   "lon": 8.35723,
+   "elev": 454,
+   "source": "webcam",
+   "webcam_id": 128,
+   "webcam_label": "Stans Spital Nidwalden",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r62_mid",
+   "region_id": 62,
+   "region_name": {
+    "de": "NW",
+    "fr": "NW",
+    "it": "NW"
+   },
+   "band": "mid",
+   "lat": 46.92715,
+   "lon": 8.42675,
+   "elev": 1162,
+   "source": "webcam",
+   "webcam_id": 328,
+   "webcam_label": "Niederrickenbach",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r63_high",
+   "region_id": 63,
+   "region_name": {
+    "de": "Samedan/S-Chanf",
+    "fr": "Samedan/S-Chanf",
+    "it": "Samedan/S-Chanf"
+   },
+   "band": "high",
+   "lat": 46.60001,
+   "lon": 9.9543,
+   "elev": 1750,
+   "source": "webcam",
+   "webcam_id": 111,
+   "webcam_label": "Zuoz",
+   "cams_in_band": 3
+  },
+  {
+   "point_id": "r64_center",
+   "region_id": 64,
+   "region_name": {
+    "de": "ob. Emmental",
+    "fr": "ob. Emmental",
+    "it": "ob. Emmental"
+   },
+   "band": null,
+   "lat": 46.87087,
+   "lon": 7.76884,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r65_center",
+   "region_id": 65,
+   "region_name": {
+    "de": "March/Höfe",
+    "fr": "March/Höfe",
+    "it": "March/Höfe"
+   },
+   "band": null,
+   "lat": 47.1841,
+   "lon": 8.87314,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r66_mid",
+   "region_id": 66,
+   "region_name": {
+    "de": "Obertoggenburg",
+    "fr": "Obertoggenburg",
+    "it": "Obertoggenburg"
+   },
+   "band": "mid",
+   "lat": 47.19215,
+   "lon": 9.34519,
+   "elev": 1270,
+   "source": "webcam",
+   "webcam_id": 175,
+   "webcam_label": "Wildhaus Oberdorf",
+   "cams_in_band": 6
+  },
+  {
+   "point_id": "r66_high",
+   "region_id": 66,
+   "region_name": {
+    "de": "Obertoggenburg",
+    "fr": "Obertoggenburg",
+    "it": "Obertoggenburg"
+   },
+   "band": "high",
+   "lat": 47.24923,
+   "lon": 9.34207,
+   "elev": 2497,
+   "source": "webcam",
+   "webcam_id": 156,
+   "webcam_label": "Säntis",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r75_mid",
+   "region_id": 75,
+   "region_name": {
+    "de": "Saanenl./Pays d'Enhaut",
+    "fr": "Saanenl./Pays d'Enhaut",
+    "it": "Saanenl./Pays d'Enhaut"
+   },
+   "band": "mid",
+   "lat": 46.41852,
+   "lon": 7.32443,
+   "elev": 1250,
+   "source": "webcam",
+   "webcam_id": 626,
+   "webcam_label": "Lauenen Hotel Alpenland",
+   "cams_in_band": 7
+  },
+  {
+   "point_id": "r75_high",
+   "region_id": 75,
+   "region_name": {
+    "de": "Saanenl./Pays d'Enhaut",
+    "fr": "Saanenl./Pays d'Enhaut",
+    "it": "Saanenl./Pays d'Enhaut"
+   },
+   "band": "high",
+   "lat": 46.44727,
+   "lon": 7.14521,
+   "elev": 1644,
+   "source": "webcam",
+   "webcam_id": 99,
+   "webcam_label": "La Braye",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r67_low",
+   "region_id": 67,
+   "region_name": {
+    "de": "Visp/Brig",
+    "fr": "Visp/Brig",
+    "it": "Visp/Brig"
+   },
+   "band": "low",
+   "lat": 46.31411,
+   "lon": 7.99086,
+   "elev": 702,
+   "source": "webcam",
+   "webcam_id": 456,
+   "webcam_label": "Brig Stockalperschloss",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r67_high",
+   "region_id": 67,
+   "region_name": {
+    "de": "Visp/Brig",
+    "fr": "Visp/Brig",
+    "it": "Visp/Brig"
+   },
+   "band": "high",
+   "lat": 46.30342,
+   "lon": 8.04121,
+   "elev": 1849,
+   "source": "webcam",
+   "webcam_id": 409,
+   "webcam_label": "Rosswald",
+   "cams_in_band": 4
+  },
+  {
+   "point_id": "r78_low",
+   "region_id": 78,
+   "region_name": {
+    "de": "Knonaueramt",
+    "fr": "Knonaueramt",
+    "it": "Knonaueramt"
+   },
+   "band": "low",
+   "lat": 47.31021,
+   "lon": 8.50748,
+   "elev": 800,
+   "source": "webcam",
+   "webcam_id": 134,
+   "webcam_label": "Felsenegg",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r68_high",
+   "region_id": 68,
+   "region_name": {
+    "de": "OW",
+    "fr": "OW",
+    "it": "OW"
+   },
+   "band": "high",
+   "lat": 46.77462,
+   "lon": 8.26852,
+   "elev": 1916,
+   "source": "webcam",
+   "webcam_id": 66,
+   "webcam_label": "Melchsee-Frutt",
+   "cams_in_band": 3
+  },
+  {
+   "point_id": "r69_center",
+   "region_id": 69,
+   "region_name": {
+    "de": "Gros-de-Vaud",
+    "fr": "Gros-de-Vaud",
+    "it": "Gros-de-Vaud"
+   },
+   "band": null,
+   "lat": 46.63869,
+   "lon": 6.62879,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r70_center",
+   "region_id": 70,
+   "region_name": {
+    "de": "Prättigau",
+    "fr": "Prättigau",
+    "it": "Prättigau"
+   },
+   "band": null,
+   "lat": 46.9145,
+   "lon": 9.81677,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r71_center",
+   "region_id": 71,
+   "region_name": {
+    "de": "Puschlav",
+    "fr": "Val Poschiavo",
+    "it": "Val Poschiavo"
+   },
+   "band": null,
+   "lat": 46.33538,
+   "lon": 10.06516,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r72_center",
+   "region_id": 72,
+   "region_name": {
+    "de": "Riviera",
+    "fr": "Riviera",
+    "it": "Riviera"
+   },
+   "band": null,
+   "lat": 46.30476,
+   "lon": 8.9977,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r73_low",
+   "region_id": 73,
+   "region_name": {
+    "de": "Rorschach",
+    "fr": "Rorschach",
+    "it": "Rorschach"
+   },
+   "band": "low",
+   "lat": 47.47447,
+   "lon": 9.50827,
+   "elev": 570,
+   "source": "webcam",
+   "webcam_id": 1,
+   "webcam_label": "Rorschacherberg",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r74_center",
+   "region_id": 74,
+   "region_name": {
+    "de": "Saane",
+    "fr": "Sarine",
+    "it": "Sarine"
+   },
+   "band": null,
+   "lat": 46.77455,
+   "lon": 7.09604,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r77_center",
+   "region_id": 77,
+   "region_name": {
+    "de": "Sarganserland",
+    "fr": "Sarganserland",
+    "it": "Sarganserland"
+   },
+   "band": null,
+   "lat": 46.98621,
+   "lon": 9.38048,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r79_center",
+   "region_id": 79,
+   "region_name": {
+    "de": "Schaffhausen",
+    "fr": "Schaffhausen",
+    "it": "Schaffhausen"
+   },
+   "band": null,
+   "lat": 47.74032,
+   "lon": 8.64925,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r80_center",
+   "region_id": 80,
+   "region_name": {
+    "de": "Schams",
+    "fr": "Schams",
+    "it": "Schams"
+   },
+   "band": null,
+   "lat": 46.61977,
+   "lon": 9.43057,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r81_low",
+   "region_id": 81,
+   "region_name": {
+    "de": "SZ/Rigi",
+    "fr": "SZ/Rigi",
+    "it": "SZ/Rigi"
+   },
+   "band": "low",
+   "lat": 46.98065,
+   "lon": 8.6177,
+   "elev": 645,
+   "source": "webcam",
+   "webcam_id": 266,
+   "webcam_label": "Morschach Swiss Holiday Park",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r81_mid",
+   "region_id": 81,
+   "region_name": {
+    "de": "SZ/Rigi",
+    "fr": "SZ/Rigi",
+    "it": "SZ/Rigi"
+   },
+   "band": "mid",
+   "lat": 47.06731,
+   "lon": 8.64968,
+   "elev": 1185,
+   "source": "webcam",
+   "webcam_id": 605,
+   "webcam_label": "Sattel Mostelberg",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r81_high",
+   "region_id": 81,
+   "region_name": {
+    "de": "SZ/Rigi",
+    "fr": "SZ/Rigi",
+    "it": "SZ/Rigi"
+   },
+   "band": "high",
+   "lat": 47.02092,
+   "lon": 8.703,
+   "elev": 1570,
+   "source": "webcam",
+   "webcam_id": 604,
+   "webcam_label": "Rotenflue",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r82_low",
+   "region_id": 82,
+   "region_name": {
+    "de": "Seeland/Bielersee",
+    "fr": "Lac de Bienne",
+    "it": "Lac de Bienne"
+   },
+   "band": "low",
+   "lat": 47.14278,
+   "lon": 7.26241,
+   "elev": 444,
+   "source": "webcam",
+   "webcam_id": 225,
+   "webcam_label": "Biel",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r82_mid",
+   "region_id": 82,
+   "region_name": {
+    "de": "Seeland/Bielersee",
+    "fr": "Lac de Bienne",
+    "it": "Lac de Bienne"
+   },
+   "band": "mid",
+   "lat": 47.17185,
+   "lon": 7.28412,
+   "elev": 927,
+   "source": "webcam",
+   "webcam_id": 125,
+   "webcam_label": "Biel Bözingenberg",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r83_center",
+   "region_id": 83,
+   "region_name": {
+    "de": "Schwarzenburgerland",
+    "fr": "Schwarzenburgerland",
+    "it": "Schwarzenburgerland"
+   },
+   "band": null,
+   "lat": 46.78818,
+   "lon": 7.39725,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r85_mid",
+   "region_id": 85,
+   "region_name": {
+    "de": "Obersimmental",
+    "fr": "Obersimmental",
+    "it": "Obersimmental"
+   },
+   "band": "mid",
+   "lat": 46.50068,
+   "lon": 7.40552,
+   "elev": 1002,
+   "source": "webcam",
+   "webcam_id": 442,
+   "webcam_label": "St. Stephan Flugplatz",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r86_low",
+   "region_id": 86,
+   "region_name": {
+    "de": "Simplon",
+    "fr": "Simplon",
+    "it": "Sempione"
+   },
+   "band": "low",
+   "lat": 46.19574,
+   "lon": 8.13969,
+   "elev": 865,
+   "source": "webcam",
+   "webcam_id": 644,
+   "webcam_label": "Gondo",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r86_high",
+   "region_id": 86,
+   "region_name": {
+    "de": "Simplon",
+    "fr": "Simplon",
+    "it": "Sempione"
+   },
+   "band": "high",
+   "lat": 46.23802,
+   "lon": 8.05721,
+   "elev": 3195,
+   "source": "webcam",
+   "webcam_id": 685,
+   "webcam_label": "Hübschhorn",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r87_low",
+   "region_id": 87,
+   "region_name": {
+    "de": "Sion/Sierre",
+    "fr": "Sion/Sierre",
+    "it": "Sion/Sierre"
+   },
+   "band": "low",
+   "lat": 46.22267,
+   "lon": 7.33749,
+   "elev": 500,
+   "source": "webcam",
+   "webcam_id": 185,
+   "webcam_label": "Sion Aéroport",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r87_high",
+   "region_id": 87,
+   "region_name": {
+    "de": "Sion/Sierre",
+    "fr": "Sion/Sierre",
+    "it": "Sion/Sierre"
+   },
+   "band": "high",
+   "lat": 46.34667,
+   "lon": 7.43546,
+   "elev": 1776,
+   "source": "webcam",
+   "webcam_id": 356,
+   "webcam_label": "Anzère Lac de Tseuzier",
+   "cams_in_band": 4
+  },
+  {
+   "point_id": "r88_mid",
+   "region_id": 88,
+   "region_name": {
+    "de": "BL Jura",
+    "fr": "BL Jura",
+    "it": "BL Jura"
+   },
+   "band": "mid",
+   "lat": 47.37364,
+   "lon": 7.69993,
+   "elev": 921,
+   "source": "webcam",
+   "webcam_id": 80,
+   "webcam_label": "Wasserfallen",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r89_low",
+   "region_id": 89,
+   "region_name": {
+    "de": "SO Ost/Zofingen",
+    "fr": "SO Ost/Zofingen",
+    "it": "SO Ost/Zofingen"
+   },
+   "band": "low",
+   "lat": 47.30509,
+   "lon": 7.71889,
+   "elev": 833,
+   "source": "webcam",
+   "webcam_id": 17,
+   "webcam_label": "Roggenberg",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r91_low",
+   "region_id": 91,
+   "region_name": {
+    "de": "AG Suhre-/Seetal",
+    "fr": "AG Suhre-/Seetal",
+    "it": "AG Suhre-/Seetal"
+   },
+   "band": "low",
+   "lat": 47.32093,
+   "lon": 8.20723,
+   "elev": 480,
+   "source": "webcam",
+   "webcam_id": 473,
+   "webcam_label": "Seengen",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r92_mid",
+   "region_id": 92,
+   "region_name": {
+    "de": "Surselva (Cadi)",
+    "fr": "Surselva (Cadi)",
+    "it": "Surselva (Cadi)"
+   },
+   "band": "mid",
+   "lat": 46.68761,
+   "lon": 8.84741,
+   "elev": 1170,
+   "source": "webcam",
+   "webcam_id": 101,
+   "webcam_label": "Disentis",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r92_high",
+   "region_id": 92,
+   "region_name": {
+    "de": "Surselva (Cadi)",
+    "fr": "Surselva (Cadi)",
+    "it": "Surselva (Cadi)"
+   },
+   "band": "high",
+   "lat": 46.70445,
+   "lon": 8.81597,
+   "elev": 1850,
+   "source": "webcam",
+   "webcam_id": 296,
+   "webcam_label": "Caischavedra",
+   "cams_in_band": 3
+  },
+  {
+   "point_id": "r93_mid",
+   "region_id": 93,
+   "region_name": {
+    "de": "Surselva (Foppa)",
+    "fr": "Surselva (Foppa)",
+    "it": "Surselva (Foppa)"
+   },
+   "band": "mid",
+   "lat": 46.81327,
+   "lon": 9.3166,
+   "elev": 1217,
+   "source": "webcam",
+   "webcam_id": 162,
+   "webcam_label": "Conn Rheinschlucht",
+   "cams_in_band": 5
+  },
+  {
+   "point_id": "r93_high",
+   "region_id": 93,
+   "region_name": {
+    "de": "Surselva (Foppa)",
+    "fr": "Surselva (Foppa)",
+    "it": "Surselva (Foppa)"
+   },
+   "band": "high",
+   "lat": 46.86767,
+   "lon": 9.23996,
+   "elev": 2110,
+   "source": "webcam",
+   "webcam_id": 681,
+   "webcam_label": "Flims Segneshütte",
+   "cams_in_band": 10
+  },
+  {
+   "point_id": "r94_center",
+   "region_id": 94,
+   "region_name": {
+    "de": "Surses",
+    "fr": "Surses",
+    "it": "Surses"
+   },
+   "band": null,
+   "lat": 46.53784,
+   "lon": 9.60124,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r95_low",
+   "region_id": 95,
+   "region_name": {
+    "de": "Thunersee",
+    "fr": "Thunersee",
+    "it": "Thunersee"
+   },
+   "band": "low",
+   "lat": 46.68726,
+   "lon": 7.6819,
+   "elev": 599,
+   "source": "webcam",
+   "webcam_id": 455,
+   "webcam_label": "Spiez",
+   "cams_in_band": 3
+  },
+  {
+   "point_id": "r95_mid",
+   "region_id": 95,
+   "region_name": {
+    "de": "Thunersee",
+    "fr": "Thunersee",
+    "it": "Thunersee"
+   },
+   "band": "mid",
+   "lat": 46.74961,
+   "lon": 7.69341,
+   "elev": 1127,
+   "source": "webcam",
+   "webcam_id": 166,
+   "webcam_label": "Heiligenschwendi Berner Reha Zentrum",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r95_high",
+   "region_id": 95,
+   "region_name": {
+    "de": "Thunersee",
+    "fr": "Thunersee",
+    "it": "Thunersee"
+   },
+   "band": "high",
+   "lat": 46.71056,
+   "lon": 7.77516,
+   "elev": 1933,
+   "source": "webcam",
+   "webcam_id": 203,
+   "webcam_label": "Niederhorn",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r96_mid",
+   "region_id": 96,
+   "region_name": {
+    "de": "Sur Tasna",
+    "fr": "Sur Tasna",
+    "it": "Sur Tasna"
+   },
+   "band": "mid",
+   "lat": 46.77405,
+   "lon": 10.19416,
+   "elev": 1432,
+   "source": "webcam",
+   "webcam_id": 322,
+   "webcam_label": "Ardez",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r97_low",
+   "region_id": 97,
+   "region_name": {
+    "de": "unt. Emmental",
+    "fr": "unt. Emmental",
+    "it": "unt. Emmental"
+   },
+   "band": "low",
+   "lat": 47.0356,
+   "lon": 7.73183,
+   "elev": 777,
+   "source": "webcam",
+   "webcam_id": 1356,
+   "webcam_label": "Sumiswald Gammenthal",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r98_center",
+   "region_id": 98,
+   "region_name": {
+    "de": "Untertoggenburg",
+    "fr": "Untertoggenburg",
+    "it": "Untertoggenburg"
+   },
+   "band": null,
+   "lat": 47.35634,
+   "lon": 9.08616,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r117_center",
+   "region_id": 117,
+   "region_name": {
+    "de": "Malcantone",
+    "fr": "Malcantone",
+    "it": "Malcantone"
+   },
+   "band": null,
+   "lat": 46.01759,
+   "lon": 8.86442,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r99_center",
+   "region_id": 99,
+   "region_name": {
+    "de": "UR Oberland",
+    "fr": "UR Oberland",
+    "it": "UR Oberland"
+   },
+   "band": null,
+   "lat": 46.75578,
+   "lon": 8.62399,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r127_mid",
+   "region_id": 127,
+   "region_name": {
+    "de": "Turtmanntal",
+    "fr": "Turtmanntal",
+    "it": "Turtmanntal"
+   },
+   "band": "mid",
+   "lat": 46.29564,
+   "lon": 7.77809,
+   "elev": 1210,
+   "source": "webcam",
+   "webcam_id": 366,
+   "webcam_label": "Eischoll",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r127_high",
+   "region_id": 127,
+   "region_name": {
+    "de": "Turtmanntal",
+    "fr": "Turtmanntal",
+    "it": "Turtmanntal"
+   },
+   "band": "high",
+   "lat": 46.16986,
+   "lon": 7.69247,
+   "elev": 2180,
+   "source": "webcam",
+   "webcam_id": 410,
+   "webcam_label": "Turtmann Damm",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r100_low",
+   "region_id": 100,
+   "region_name": {
+    "de": "UR Unterland",
+    "fr": "UR Unterland",
+    "it": "UR Unterland"
+   },
+   "band": "low",
+   "lat": 46.96896,
+   "lon": 8.5925,
+   "elev": 498,
+   "source": "webcam",
+   "webcam_id": 349,
+   "webcam_label": "Rütliwiese",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r100_high",
+   "region_id": 100,
+   "region_name": {
+    "de": "UR Unterland",
+    "fr": "UR Unterland",
+    "it": "UR Unterland"
+   },
+   "band": "high",
+   "lat": 46.80086,
+   "lon": 8.46778,
+   "elev": 1850,
+   "source": "webcam",
+   "webcam_id": 14,
+   "webcam_label": "Engelberg Fürenalp",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r101_center",
+   "region_id": 101,
+   "region_name": {
+    "de": "Ferrera/Avers",
+    "fr": "Ferrera/Avers",
+    "it": "Ferrera/Avers"
+   },
+   "band": null,
+   "lat": 46.47628,
+   "lon": 9.49784,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r102_mid",
+   "region_id": 102,
+   "region_name": {
+    "de": "Valsertal/Lumnezia",
+    "fr": "Valsertal/Lumnezia",
+    "it": "Valsertal/Lumnezia"
+   },
+   "band": "mid",
+   "lat": 46.70069,
+   "lon": 9.19832,
+   "elev": 1231,
+   "source": "webcam",
+   "webcam_id": 242,
+   "webcam_label": "Camuns",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r104_low",
+   "region_id": 104,
+   "region_name": {
+    "de": "Weinfelden/Kreuzlingen",
+    "fr": "Weinfelden/Kreuzlingen",
+    "it": "Weinfelden/Kreuzlingen"
+   },
+   "band": "low",
+   "lat": 47.63834,
+   "lon": 9.08776,
+   "elev": 622,
+   "source": "webcam",
+   "webcam_id": 345,
+   "webcam_label": "Wäldi-Hohenrain Napolenturm",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r105_center",
+   "region_id": 105,
+   "region_name": {
+    "de": "Weinland",
+    "fr": "Weinland",
+    "it": "Weinland"
+   },
+   "band": null,
+   "lat": 47.61285,
+   "lon": 8.70111,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r106_center",
+   "region_id": 106,
+   "region_name": {
+    "de": "Werdenberg",
+    "fr": "Werdenberg",
+    "it": "Werdenberg"
+   },
+   "band": null,
+   "lat": 47.17566,
+   "lon": 9.43849,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r108_center",
+   "region_id": 108,
+   "region_name": {
+    "de": "Glattfelden/Rafz",
+    "fr": "Glattfelden/Rafz",
+    "it": "Glattfelden/Rafz"
+   },
+   "band": null,
+   "lat": 47.59276,
+   "lon": 8.52353,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r109_low",
+   "region_id": 109,
+   "region_name": {
+    "de": "Zugersee",
+    "fr": "Zugersee",
+    "it": "Zugersee"
+   },
+   "band": "low",
+   "lat": 47.17567,
+   "lon": 8.51385,
+   "elev": 430,
+   "source": "webcam",
+   "webcam_id": 392,
+   "webcam_label": "Zug",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r110_center",
+   "region_id": 110,
+   "region_name": {
+    "de": "Bez. Meilen",
+    "fr": "Bez. Meilen",
+    "it": "Bez. Meilen"
+   },
+   "band": null,
+   "lat": 47.29839,
+   "lon": 8.63924,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r111_center",
+   "region_id": 111,
+   "region_name": {
+    "de": "Zurzibiet",
+    "fr": "Zurzibiet",
+    "it": "Zurzibiet"
+   },
+   "band": null,
+   "lat": 47.55741,
+   "lon": 8.304,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r112_center",
+   "region_id": 112,
+   "region_name": {
+    "de": "Klettgau",
+    "fr": "Klettgau",
+    "it": "Klettgau"
+   },
+   "band": null,
+   "lat": 47.70895,
+   "lon": 8.50009,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r113_high",
+   "region_id": 113,
+   "region_name": {
+    "de": "Engelbergertal",
+    "fr": "Engelbergertal",
+    "it": "Engelbergertal"
+   },
+   "band": "high",
+   "lat": 46.79133,
+   "lon": 8.38869,
+   "elev": 1795,
+   "source": "webcam",
+   "webcam_id": 1355,
+   "webcam_label": "Engelberg Titlis Trübsee",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r114_center",
+   "region_id": 114,
+   "region_name": {
+    "de": "Verzascatal",
+    "fr": "Val Verzasca",
+    "it": "Val Verzasca"
+   },
+   "band": null,
+   "lat": 46.31395,
+   "lon": 8.79358,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r115_center",
+   "region_id": 115,
+   "region_name": {
+    "de": "Niedersimmental",
+    "fr": "Niedersimmental",
+    "it": "Niedersimmental"
+   },
+   "band": null,
+   "lat": 46.62404,
+   "lon": 7.50805,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r116_center",
+   "region_id": 116,
+   "region_name": {
+    "de": "Ceneri",
+    "fr": "Ceneri",
+    "it": "Ceneri"
+   },
+   "band": null,
+   "lat": 46.08827,
+   "lon": 8.98213,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r119_center",
+   "region_id": 119,
+   "region_name": {
+    "de": "Magadino",
+    "fr": "Magadino",
+    "it": "Magadino"
+   },
+   "band": null,
+   "lat": 46.18004,
+   "lon": 8.99413,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r120_high",
+   "region_id": 120,
+   "region_name": {
+    "de": "Bleniotal",
+    "fr": "Valle di Blenio",
+    "it": "Valle di Blenio"
+   },
+   "band": "high",
+   "lat": 46.498,
+   "lon": 8.9109,
+   "elev": 1800,
+   "source": "webcam",
+   "webcam_id": 245,
+   "webcam_label": "Capanna Gorda",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r121_center",
+   "region_id": 121,
+   "region_name": {
+    "de": "Oberes Maggiatal",
+    "fr": "Alta Valle Maggia",
+    "it": "Alta Valle Maggia"
+   },
+   "band": null,
+   "lat": 46.38845,
+   "lon": 8.58763,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r122_mid",
+   "region_id": 122,
+   "region_name": {
+    "de": "Urserental",
+    "fr": "Urserental",
+    "it": "Urserental"
+   },
+   "band": "mid",
+   "lat": 46.63226,
+   "lon": 8.57766,
+   "elev": 1435,
+   "source": "webcam",
+   "webcam_id": 150,
+   "webcam_label": "Andermatt Golfplatz",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r122_high",
+   "region_id": 122,
+   "region_name": {
+    "de": "Urserental",
+    "fr": "Urserental",
+    "it": "Urserental"
+   },
+   "band": "high",
+   "lat": 46.64584,
+   "lon": 8.58766,
+   "elev": 1837,
+   "source": "webcam",
+   "webcam_id": 8,
+   "webcam_label": "Andermatt Bäzberg",
+   "cams_in_band": 4
+  },
+  {
+   "point_id": "r123_center",
+   "region_id": 123,
+   "region_name": {
+    "de": "Bedretto/Alta Leventina",
+    "fr": "Bedretto/Alta Leventina",
+    "it": "Bedretto/Alta Leventina"
+   },
+   "band": null,
+   "lat": 46.5304,
+   "lon": 8.61905,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r124_mid",
+   "region_id": 124,
+   "region_name": {
+    "de": "Leukerbad/Lötschental",
+    "fr": "Leukerbad/Lötschental",
+    "it": "Leukerbad/Lötschental"
+   },
+   "band": "mid",
+   "lat": 46.33691,
+   "lon": 7.63604,
+   "elev": 1300,
+   "source": "webcam",
+   "webcam_id": 312,
+   "webcam_label": "Albinen",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r124_high",
+   "region_id": 124,
+   "region_name": {
+    "de": "Leukerbad/Lötschental",
+    "fr": "Leukerbad/Lötschental",
+    "it": "Leukerbad/Lötschental"
+   },
+   "band": "high",
+   "lat": 46.39771,
+   "lon": 7.61564,
+   "elev": 2335,
+   "source": "webcam",
+   "webcam_id": 3,
+   "webcam_label": "Leukerbad Gemmi",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r125_low",
+   "region_id": 125,
+   "region_name": {
+    "de": "Greyerzerland",
+    "fr": "La Gruyère",
+    "it": "La Gruyère"
+   },
+   "band": "low",
+   "lat": 46.58421,
+   "lon": 7.08212,
+   "elev": 745,
+   "source": "webcam",
+   "webcam_id": 106,
+   "webcam_label": "Gruyères",
+   "cams_in_band": 3
+  },
+  {
+   "point_id": "r125_high",
+   "region_id": 125,
+   "region_name": {
+    "de": "Greyerzerland",
+    "fr": "La Gruyère",
+    "it": "La Gruyère"
+   },
+   "band": "high",
+   "lat": 46.67768,
+   "lon": 7.17887,
+   "elev": 1600,
+   "source": "webcam",
+   "webcam_id": 271,
+   "webcam_label": "La Roche La Berra",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r126_mid",
+   "region_id": 126,
+   "region_name": {
+    "de": "Sense",
+    "fr": "Singine",
+    "it": "Singine"
+   },
+   "band": "mid",
+   "lat": 46.674,
+   "lon": 7.28285,
+   "elev": 1128,
+   "source": "webcam",
+   "webcam_id": 259,
+   "webcam_label": "Schwarzsee",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r129_center",
+   "region_id": 129,
+   "region_name": {
+    "de": "Laupen/Wohlensee",
+    "fr": "Laupen/Wohlensee",
+    "it": "Laupen/Wohlensee"
+   },
+   "band": null,
+   "lat": 46.96534,
+   "lon": 7.27938,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r130_low",
+   "region_id": 130,
+   "region_name": {
+    "de": "Leuk/Raron",
+    "fr": "Leuk/Raron",
+    "it": "Leuk/Raron"
+   },
+   "band": "low",
+   "lat": 46.31628,
+   "lon": 7.60578,
+   "elev": 747,
+   "source": "webcam",
+   "webcam_id": 381,
+   "webcam_label": "Varen",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r130_high",
+   "region_id": 130,
+   "region_name": {
+    "de": "Leuk/Raron",
+    "fr": "Leuk/Raron",
+    "it": "Leuk/Raron"
+   },
+   "band": "high",
+   "lat": 46.34599,
+   "lon": 7.71989,
+   "elev": 2195,
+   "source": "webcam",
+   "webcam_id": 486,
+   "webcam_label": "Gampel-Bratsch Obere Feselalpe",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r131_center",
+   "region_id": 131,
+   "region_name": {
+    "de": "Val d'Anniviers",
+    "fr": "Val d'Anniviers",
+    "it": "Val d'Anniviers"
+   },
+   "band": null,
+   "lat": 46.15124,
+   "lon": 7.59835,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r132_mid",
+   "region_id": 132,
+   "region_name": {
+    "de": "Oron/Veveyse",
+    "fr": "Oron/Veveyse",
+    "it": "Oron/Veveyse"
+   },
+   "band": "mid",
+   "lat": 46.5121,
+   "lon": 6.9349,
+   "elev": 1230,
+   "source": "webcam",
+   "webcam_id": 130,
+   "webcam_label": "Corbetta",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r134_low",
+   "region_id": 134,
+   "region_name": {
+    "de": "Avenches/Murtensee",
+    "fr": "Avenches/Lac de Morat",
+    "it": "Avenches/Lac de Morat"
+   },
+   "band": "low",
+   "lat": 46.92814,
+   "lon": 7.11526,
+   "elev": 453,
+   "source": "webcam",
+   "webcam_id": 48,
+   "webcam_label": "Morat",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r135_center",
+   "region_id": 135,
+   "region_name": {
+    "de": "Broyetal/Moudon",
+    "fr": "La Broye/Moudon",
+    "it": "La Broye/Moudon"
+   },
+   "band": null,
+   "lat": 46.70982,
+   "lon": 6.80192,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r136_low",
+   "region_id": 136,
+   "region_name": {
+    "de": "VD Jura",
+    "fr": "Jura VD",
+    "it": "Jura VD"
+   },
+   "band": "low",
+   "lat": 46.71227,
+   "lon": 6.37843,
+   "elev": 761,
+   "source": "webcam",
+   "webcam_id": 157,
+   "webcam_label": "Vallorbe",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r136_mid",
+   "region_id": 136,
+   "region_name": {
+    "de": "VD Jura",
+    "fr": "Jura VD",
+    "it": "Jura VD"
+   },
+   "band": "mid",
+   "lat": 46.66128,
+   "lon": 6.33677,
+   "elev": 1110,
+   "source": "webcam",
+   "webcam_id": 105,
+   "webcam_label": "Vallée de Joux",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r137_low",
+   "region_id": 137,
+   "region_name": {
+    "de": "La Côte/Morges",
+    "fr": "La Côte/Morges",
+    "it": "La Côte/Morges"
+   },
+   "band": "low",
+   "lat": 46.50785,
+   "lon": 6.49867,
+   "elev": 374,
+   "source": "webcam",
+   "webcam_id": 83,
+   "webcam_label": "Morges Port",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r138_low",
+   "region_id": 138,
+   "region_name": {
+    "de": "Riviera/Vevey",
+    "fr": "Riviera/Vevey",
+    "it": "Riviera/Vevey"
+   },
+   "band": "low",
+   "lat": 46.45167,
+   "lon": 6.85506,
+   "elev": 395,
+   "source": "webcam",
+   "webcam_id": 113,
+   "webcam_label": "La Tour-de-Peilz",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r138_mid",
+   "region_id": 138,
+   "region_name": {
+    "de": "Riviera/Vevey",
+    "fr": "Riviera/Vevey",
+    "it": "Riviera/Vevey"
+   },
+   "band": "mid",
+   "lat": 46.48498,
+   "lon": 6.9196,
+   "elev": 1215,
+   "source": "webcam",
+   "webcam_id": 391,
+   "webcam_label": "Montreux Pléiades",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r138_high",
+   "region_id": 138,
+   "region_name": {
+    "de": "Riviera/Vevey",
+    "fr": "Riviera/Vevey",
+    "it": "Riviera/Vevey"
+   },
+   "band": "high",
+   "lat": 46.43191,
+   "lon": 6.97619,
+   "elev": 2050,
+   "source": "webcam",
+   "webcam_id": 160,
+   "webcam_label": "Montreux Rochers de Naye",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r139_low",
+   "region_id": 139,
+   "region_name": {
+    "de": "Orbeebene/Yverdon",
+    "fr": "Plaine de l Orbe/Yverdon",
+    "it": "Plaine de l Orbe/Yverdon"
+   },
+   "band": "low",
+   "lat": 46.77837,
+   "lon": 6.64096,
+   "elev": 436,
+   "source": "webcam",
+   "webcam_id": 180,
+   "webcam_label": "Yverdon-les-Bains",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r140_low",
+   "region_id": 140,
+   "region_name": {
+    "de": "SO West/Buecheggberg",
+    "fr": "SO West/Buecheggberg",
+    "it": "SO West/Buecheggberg"
+   },
+   "band": "low",
+   "lat": 47.18315,
+   "lon": 7.41377,
+   "elev": 451,
+   "source": "webcam",
+   "webcam_id": 16,
+   "webcam_label": "Grenchen Flughafen",
+   "cams_in_band": 3
+  },
+  {
+   "point_id": "r141_high",
+   "region_id": 141,
+   "region_name": {
+    "de": "Saastal",
+    "fr": "Saastal",
+    "it": "Saastal"
+   },
+   "band": "high",
+   "lat": 46.22675,
+   "lon": 7.90219,
+   "elev": 1899,
+   "source": "webcam",
+   "webcam_id": 314,
+   "webcam_label": "Gspon",
+   "cams_in_band": 3
+  },
+  {
+   "point_id": "r142_center",
+   "region_id": 142,
+   "region_name": {
+    "de": "Laufental/Dorneck",
+    "fr": "Laufental/Dorneck",
+    "it": "LLaufental/Dorneck"
+   },
+   "band": null,
+   "lat": 47.4271,
+   "lon": 7.56045,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r143_low",
+   "region_id": 143,
+   "region_name": {
+    "de": "Birseck/Leimental",
+    "fr": "Birseck/Leimental",
+    "it": "Birseck/Leimental"
+   },
+   "band": "low",
+   "lat": 47.4934,
+   "lon": 7.62142,
+   "elev": 343,
+   "source": "webcam",
+   "webcam_id": 457,
+   "webcam_label": "Arlesheim",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r144_low",
+   "region_id": 144,
+   "region_name": {
+    "de": "Liestal/Rheinfelden",
+    "fr": "Liestal/Rheinfelden",
+    "it": "Liestal/Rheinfelden"
+   },
+   "band": "low",
+   "lat": 47.52546,
+   "lon": 7.68988,
+   "elev": 350,
+   "source": "webcam",
+   "webcam_id": 262,
+   "webcam_label": "Pratteln",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r145_center",
+   "region_id": 145,
+   "region_name": {
+    "de": "Oberaargau S",
+    "fr": "Oberaargau S",
+    "it": "Oberaargau S"
+   },
+   "band": null,
+   "lat": 47.13558,
+   "lon": 7.7992,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r146_high",
+   "region_id": 146,
+   "region_name": {
+    "de": "Rheinwald",
+    "fr": "Valrain",
+    "it": "Valrain"
+   },
+   "band": "high",
+   "lat": 46.5306,
+   "lon": 9.31384,
+   "elev": 2100,
+   "source": "webcam",
+   "webcam_id": 64,
+   "webcam_label": "Splügen Tanatzhöhe",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r147_high",
+   "region_id": 147,
+   "region_name": {
+    "de": "Schanfigg",
+    "fr": "Schanfigg",
+    "it": "Schanfigg"
+   },
+   "band": "high",
+   "lat": 46.7865,
+   "lon": 9.66507,
+   "elev": 1963,
+   "source": "webcam",
+   "webcam_id": 216,
+   "webcam_label": "Arosa Bärenland",
+   "cams_in_band": 7
+  },
+  {
+   "point_id": "r148_center",
+   "region_id": 148,
+   "region_name": {
+    "de": "Safiental",
+    "fr": "Safiental",
+    "it": "Safiental"
+   },
+   "band": null,
+   "lat": 46.67895,
+   "lon": 9.29661,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r149_center",
+   "region_id": 149,
+   "region_name": {
+    "de": "Herrschaft",
+    "fr": "Herrschaft",
+    "it": "Herrschaft"
+   },
+   "band": null,
+   "lat": 47.0245,
+   "lon": 9.56669,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r150_mid",
+   "region_id": 150,
+   "region_name": {
+    "de": "Liechtenstein",
+    "fr": "Liechtenstein",
+    "it": "Liechtenstein"
+   },
+   "band": "mid",
+   "lat": 47.11945,
+   "lon": 9.54435,
+   "elev": 910,
+   "source": "webcam",
+   "webcam_id": 484,
+   "webcam_label": "Triesenberg",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r150_high",
+   "region_id": 150,
+   "region_name": {
+    "de": "Liechtenstein",
+    "fr": "Liechtenstein",
+    "it": "Liechtenstein"
+   },
+   "band": "high",
+   "lat": 47.10285,
+   "lon": 9.61956,
+   "elev": 1991,
+   "source": "webcam",
+   "webcam_id": 654,
+   "webcam_label": "Malbun Sareis",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r151_low",
+   "region_id": 151,
+   "region_name": {
+    "de": "Walensee",
+    "fr": "Walensee",
+    "it": "Walensee"
+   },
+   "band": "low",
+   "lat": 47.13602,
+   "lon": 9.09944,
+   "elev": 441,
+   "source": "webcam",
+   "webcam_id": 688,
+   "webcam_label": "Weesen",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r151_high",
+   "region_id": 151,
+   "region_name": {
+    "de": "Walensee",
+    "fr": "Walensee",
+    "it": "Walensee"
+   },
+   "band": "high",
+   "lat": 47.07397,
+   "lon": 9.26812,
+   "elev": 1950,
+   "source": "webcam",
+   "webcam_id": 483,
+   "webcam_label": "Flumserberg Prodkamm",
+   "cams_in_band": 3
+  },
+  {
+   "point_id": "r152_high",
+   "region_id": 152,
+   "region_name": {
+    "de": "Sernftal",
+    "fr": "Sernftal",
+    "it": "Sernftal"
+   },
+   "band": "high",
+   "lat": 46.92977,
+   "lon": 9.14252,
+   "elev": 2017,
+   "source": "webcam",
+   "webcam_id": 652,
+   "webcam_label": "Elm Skihaus Schabell",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r153_center",
+   "region_id": 153,
+   "region_name": {
+    "de": "Wägital",
+    "fr": "Wägital",
+    "it": "Wägital"
+   },
+   "band": null,
+   "lat": 47.09602,
+   "lon": 8.91545,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r154_low",
+   "region_id": 154,
+   "region_name": {
+    "de": "GL Nord",
+    "fr": "GL Nord",
+    "it": "GL Nord"
+   },
+   "band": "low",
+   "lat": 47.08295,
+   "lon": 9.0675,
+   "elev": 460,
+   "source": "webcam",
+   "webcam_id": 621,
+   "webcam_label": "Mollis Flugplatz",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r155_low",
+   "region_id": 155,
+   "region_name": {
+    "de": "See-Gaster",
+    "fr": "See-Gaster",
+    "it": "See-Gaster"
+   },
+   "band": "low",
+   "lat": 47.13246,
+   "lon": 9.06833,
+   "elev": 580,
+   "source": "webcam",
+   "webcam_id": 413,
+   "webcam_label": "Ziegelbrücke Swiss Aviation School",
+   "cams_in_band": 2
+  },
+  {
+   "point_id": "r156_center",
+   "region_id": 156,
+   "region_name": {
+    "de": "ob. Sihltal",
+    "fr": "ob. Sihltal",
+    "it": "ob. Sihltal"
+   },
+   "band": null,
+   "lat": 47.08249,
+   "lon": 8.76836,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r157_center",
+   "region_id": 157,
+   "region_name": {
+    "de": "Bez. Horgen",
+    "fr": "Bez. Horgen",
+    "it": "Bez. Horgen"
+   },
+   "band": null,
+   "lat": 47.24846,
+   "lon": 8.59972,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r158_low",
+   "region_id": 158,
+   "region_name": {
+    "de": "Tösstal/Tannzapfenland",
+    "fr": "Tösstal/Tannzapfenland",
+    "it": "Tösstal/Tannzapfenland"
+   },
+   "band": "low",
+   "lat": 47.38865,
+   "lon": 8.90247,
+   "elev": 872,
+   "source": "webcam",
+   "webcam_id": 670,
+   "webcam_label": "Sternenberg Gasthof Sunnebad",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r159_low",
+   "region_id": 159,
+   "region_name": {
+    "de": "Oberland (Hinwil)",
+    "fr": "Oberland (Hinwil)",
+    "it": "Oberland (Hinwil)"
+   },
+   "band": "low",
+   "lat": 47.3213,
+   "lon": 8.80269,
+   "elev": 547,
+   "source": "webcam",
+   "webcam_id": 10,
+   "webcam_label": "Wetzikon GZO Spital",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r160_center",
+   "region_id": 160,
+   "region_name": {
+    "de": "Greifen-/Pfäffikersee",
+    "fr": "Greifen-/Pfäffikersee",
+    "it": "Greifen-/Pfäffikersee"
+   },
+   "band": null,
+   "lat": 47.38282,
+   "lon": 8.72453,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r161_center",
+   "region_id": 161,
+   "region_name": {
+    "de": "AR Mittelland",
+    "fr": "AR Mittelland",
+    "it": "AR Mittelland"
+   },
+   "band": null,
+   "lat": 47.39867,
+   "lon": 9.45328,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r171_center",
+   "region_id": 171,
+   "region_name": {
+    "de": "Oberaargau N",
+    "fr": "Oberaargau N",
+    "it": "Oberaargau N"
+   },
+   "band": null,
+   "lat": 47.22552,
+   "lon": 7.71667,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r162_center",
+   "region_id": 162,
+   "region_name": {
+    "de": "Stein/Steckborn",
+    "fr": "Stein/Steckborn",
+    "it": "Stein/Steckborn"
+   },
+   "band": null,
+   "lat": 47.63647,
+   "lon": 8.92404,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r164_low",
+   "region_id": 164,
+   "region_name": {
+    "de": "unt. Freiamt",
+    "fr": "unt. Freiamt",
+    "it": "unt. Freiamt"
+   },
+   "band": "low",
+   "lat": 47.38727,
+   "lon": 8.3438,
+   "elev": 583,
+   "source": "webcam",
+   "webcam_id": 348,
+   "webcam_label": "Bellikon Rehaklinik",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r165_center",
+   "region_id": 165,
+   "region_name": {
+    "de": "Bez. Bülach",
+    "fr": "Bez. Bülach",
+    "it": "Bez. Bülach"
+   },
+   "band": null,
+   "lat": 47.4936,
+   "lon": 8.59543,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r166_center",
+   "region_id": 166,
+   "region_name": {
+    "de": "Bez. Dielsdorf",
+    "fr": "Bez. Dielsdorf",
+    "it": "Bez. Dielsdorf"
+   },
+   "band": null,
+   "lat": 47.48623,
+   "lon": 8.44745,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r167_center",
+   "region_id": 167,
+   "region_name": {
+    "de": "LU Seetal",
+    "fr": "LU Seetal",
+    "it": "LU Seetal"
+   },
+   "band": null,
+   "lat": 47.17679,
+   "lon": 8.28507,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r168_low",
+   "region_id": 168,
+   "region_name": {
+    "de": "Amt Sursee",
+    "fr": "Amt Sursee",
+    "it": "Amt Sursee"
+   },
+   "band": "low",
+   "lat": 47.08049,
+   "lon": 8.11551,
+   "elev": 635,
+   "source": "webcam",
+   "webcam_id": 427,
+   "webcam_label": "Ruswil",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r169_low",
+   "region_id": 169,
+   "region_name": {
+    "de": "Limmattal",
+    "fr": "Limmattal",
+    "it": "Limmattal"
+   },
+   "band": "low",
+   "lat": 47.41097,
+   "lon": 8.38736,
+   "elev": 402,
+   "source": "webcam",
+   "webcam_id": 616,
+   "webcam_label": "Karls Kühne Gassenschau",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r170_center",
+   "region_id": 170,
+   "region_name": {
+    "de": "Aarau/Lenzburg",
+    "fr": "Aarau/Lenzburg",
+    "it": "Aarau/Lenzburg"
+   },
+   "band": null,
+   "lat": 47.3859,
+   "lon": 8.09916,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  },
+  {
+   "point_id": "r172_mid",
+   "region_id": 172,
+   "region_name": {
+    "de": "Ste-Croix/Val de Travers",
+    "fr": "Ste-Croix/Val de Travers",
+    "it": "Ste-Croix/Val de Travers"
+   },
+   "band": "mid",
+   "lat": 46.87633,
+   "lon": 6.54988,
+   "elev": 1457,
+   "source": "webcam",
+   "webcam_id": 192,
+   "webcam_label": "La Robella",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r172_high",
+   "region_id": 172,
+   "region_name": {
+    "de": "Ste-Croix/Val de Travers",
+    "fr": "Ste-Croix/Val de Travers",
+    "it": "Ste-Croix/Val de Travers"
+   },
+   "band": "high",
+   "lat": 46.84305,
+   "lon": 6.52898,
+   "elev": 1566,
+   "source": "webcam",
+   "webcam_id": 149,
+   "webcam_label": "Yverdon Les Rasses",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r173_low",
+   "region_id": 173,
+   "region_name": {
+    "de": "Montagnes NE",
+    "fr": "Montagnes NE",
+    "it": "Montagnes NE"
+   },
+   "band": "low",
+   "lat": 47.06843,
+   "lon": 6.69758,
+   "elev": 849,
+   "source": "webcam",
+   "webcam_id": 53,
+   "webcam_label": "Les Brenets",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r173_mid",
+   "region_id": 173,
+   "region_name": {
+    "de": "Montagnes NE",
+    "fr": "Montagnes NE",
+    "it": "Montagnes NE"
+   },
+   "band": "mid",
+   "lat": 46.97104,
+   "lon": 6.58626,
+   "elev": 1040,
+   "source": "webcam",
+   "webcam_id": 50,
+   "webcam_label": "La Brévine Lac des Taillères",
+   "cams_in_band": 3
+  },
+  {
+   "point_id": "r174_mid",
+   "region_id": 174,
+   "region_name": {
+    "de": "Val de Ruz",
+    "fr": "Val de Ruz",
+    "it": "Val de Ruz"
+   },
+   "band": "mid",
+   "lat": 47.05424,
+   "lon": 6.85363,
+   "elev": 1331,
+   "source": "webcam",
+   "webcam_id": 56,
+   "webcam_label": "Tête de Ran",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r175_mid",
+   "region_id": 175,
+   "region_name": {
+    "de": "SO Jura",
+    "fr": "SO Jura",
+    "it": "SO Jura"
+   },
+   "band": "mid",
+   "lat": 47.36691,
+   "lon": 7.67752,
+   "elev": 1190,
+   "source": "webcam",
+   "webcam_id": 1386,
+   "webcam_label": "Mümliswil-Ramiswil Vogelberg",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r176_high",
+   "region_id": 176,
+   "region_name": {
+    "de": "San Bernardino/Calanca",
+    "fr": "San Bernardino/Calanca",
+    "it": "San Bernardino/Calanca"
+   },
+   "band": "high",
+   "lat": 46.45628,
+   "lon": 9.1551,
+   "elev": 2322,
+   "source": "webcam",
+   "webcam_id": 610,
+   "webcam_label": "San Bernardino Tre Omen",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r177_mid",
+   "region_id": 177,
+   "region_name": {
+    "de": "Suot Tasna/Ramosch",
+    "fr": "Suot Tasna/Ramosch",
+    "it": "Suot Tasna/Ramosch"
+   },
+   "band": "mid",
+   "lat": 46.81736,
+   "lon": 10.3341,
+   "elev": 1450,
+   "source": "webcam",
+   "webcam_id": 343,
+   "webcam_label": "Sent",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r177_high",
+   "region_id": 177,
+   "region_name": {
+    "de": "Suot Tasna/Ramosch",
+    "fr": "Suot Tasna/Ramosch",
+    "it": "Suot Tasna/Ramosch"
+   },
+   "band": "high",
+   "lat": 46.7943,
+   "lon": 10.2476,
+   "elev": 1649,
+   "source": "webcam",
+   "webcam_id": 341,
+   "webcam_label": "Ftan",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r178_high",
+   "region_id": 178,
+   "region_name": {
+    "de": "Maloja/St. Moritz",
+    "fr": "Maloja/St. Moritz",
+    "it": "Maloja/St. Moritz"
+   },
+   "band": "high",
+   "lat": 46.39503,
+   "lon": 9.70942,
+   "elev": 2134,
+   "source": "webcam",
+   "webcam_id": 387,
+   "webcam_label": "Aela",
+   "cams_in_band": 6
+  },
+  {
+   "point_id": "r179_mid",
+   "region_id": 179,
+   "region_name": {
+    "de": "Moutier",
+    "fr": "Moutier",
+    "it": "Moutier"
+   },
+   "band": "mid",
+   "lat": 47.26267,
+   "lon": 7.16787,
+   "elev": 938,
+   "source": "webcam",
+   "webcam_id": 396,
+   "webcam_label": "Bellelay",
+   "cams_in_band": 1
+  },
+  {
+   "point_id": "r180_center",
+   "region_id": 180,
+   "region_name": {
+    "de": "Plateau de Diesse",
+    "fr": "Plateau de Diesse",
+    "it": "Plateau de Diesse"
+   },
+   "band": null,
+   "lat": 47.12033,
+   "lon": 7.1034,
+   "elev": null,
+   "source": "center_fallback",
+   "needs_elevation": true
+  }
+ ]
+}

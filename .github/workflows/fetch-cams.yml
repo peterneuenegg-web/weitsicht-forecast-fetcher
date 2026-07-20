@@ -1,0 +1,62 @@
+name: fetch-cams
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+on:
+  schedule:
+    # CAMS läuft 00/12 UTC, publiziert ~+8 h. 2×/Tag nach Verfügbarkeit.
+    # Schedule beschickt NUR STAGE (Prod manuell, bis verifiziert).
+    - cron: "40 9,21 * * *"
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "stage oder production"
+        required: true
+        default: "stage"
+        type: choice
+        options: [stage, production]
+      reference_datetime:
+        description: "ISO-Lauf (Backfill/Test) — leer = neuester"
+        required: false
+        default: ""
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch CAMS (stage)
+        if: github.event_name == 'schedule' || github.event.inputs.target == 'stage'
+        env:
+          CAMS_INGEST_URL:   ${{ secrets.STAGE_CAMS_INGEST_URL }}
+          CAMS_INGEST_TOKEN: ${{ secrets.STAGE_CAMS_INGEST_TOKEN }}
+          HEARTBEAT_URL:     ${{ secrets.STAGE_CAMS_HEARTBEAT_URL }}
+          ADS_URL:           ${{ secrets.ADS_URL }}
+          ADS_API_KEY:       ${{ secrets.ADS_API_KEY }}
+          REFERENCE_DATETIME: ${{ github.event.inputs.reference_datetime }}
+          HORIZON_HOURS:     "72"
+          CAMS_STEP_HOURS:   "6"
+        run: python fetch_cams.py
+
+      # Prod vorerst nur bei manuellem Dispatch mit target=production.
+      - name: Fetch CAMS (production)
+        if: github.event.inputs.target == 'production'
+        env:
+          CAMS_INGEST_URL:   ${{ secrets.PROD_CAMS_INGEST_URL }}
+          CAMS_INGEST_TOKEN: ${{ secrets.PROD_CAMS_INGEST_TOKEN }}
+          HEARTBEAT_URL:     ${{ secrets.PROD_CAMS_HEARTBEAT_URL }}
+          ADS_URL:           ${{ secrets.ADS_URL }}
+          ADS_API_KEY:       ${{ secrets.ADS_API_KEY }}
+          REFERENCE_DATETIME: ${{ github.event.inputs.reference_datetime }}
+          HORIZON_HOURS:     "72"
+          CAMS_STEP_HOURS:   "6"
+        run: python fetch_cams.py
