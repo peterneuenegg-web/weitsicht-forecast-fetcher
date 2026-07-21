@@ -184,43 +184,41 @@ def fetch_variable(var: str, ref_iso: str, horizons: list[timedelta], first: boo
     return da
 
 
-# STAC-Collection der ICON-CH2-Forecasts. Wir lesen daraus den tatsächlich
-# verfügbaren neuesten Lauf, statt reference_datetime zu raten (die Collection
-# stellt i.d.R. nur den neuesten Lauf bereit → Raten scheitert immer).
-STAC_ITEMS_URL = (
-    "https://data.geo.admin.ch/api/stac/v1/collections/"
-    "ch.meteoschweiz.ogd-forecasting-icon-ch2/items?limit=500"
-)
-
-
 def detect_latest_run() -> str | None:
     """
-    Neuesten verfügbaren ICON-CH2-Lauf bestimmen. Liest die tatsächlichen
-    `forecast:reference_datetime`-Werte aus der STAC-Collection und nimmt den
-    grössten (ISO-8601 sortiert lexikografisch = chronologisch). Der zurück-
-    gegebene Wert wird 1:1 an meteodata-lab weitergereicht.
+    reference_datetime-Spezifikation für meteodata-lab. Default "latest": die Lib
+    löst serverseitig den neuesten Lauf MIT gültigen Assets auf (ein selbst aus der
+    STAC gelesener Lauf kann bereits abgelaufene Assets haben — die Collection rollt
+    ~24 h). Den konkreten Lauf lesen wir nach dem ersten Fetch aus dem DataArray
+    (extract_ref_time) und fixieren ihn für Payload + Folge-Requests.
+    Mit REFERENCE_DATETIME kann ein fixer Lauf erzwungen werden (Backfill/Test).
     """
     override = os.environ.get("REFERENCE_DATETIME", "").strip()
     if override:
         log.info("Using REFERENCE_DATETIME override: %s", override)
         return override
-    try:
-        r = requests.get(STAC_ITEMS_URL, timeout=30)
-        r.raise_for_status()
-        refs = set()
-        for f in r.json().get("features", []):
-            rd = (f.get("properties") or {}).get("forecast:reference_datetime")
-            if rd:
-                refs.add(rd.replace("+00:00", "Z"))
-        if not refs:
-            log.error("STAC lieferte keine reference_datetime")
-            return None
-        latest = max(refs)
-        log.info("Neuester ICON-CH2-Lauf (aus STAC): %s (von %d verschiedenen)", latest, len(refs))
-        return latest
-    except Exception as e:
-        log.error("STAC-Lauf-Erkennung fehlgeschlagen: %s", e)
-        return None
+    return "latest"
+
+
+def _np_dt_to_iso(v) -> str:
+    """numpy datetime64 → 'YYYY-MM-DDTHH:MM:SSZ' (UTC)."""
+    secs = (np.datetime64(v) - np.datetime64("1970-01-01T00:00:00")) / np.timedelta64(1, "s")
+    return datetime.fromtimestamp(float(secs), tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def extract_ref_time(da) -> str:
+    """Konkreten Modelllauf (reference time) aus dem DataArray lesen."""
+    for c in ("ref_time", "forecast_reference_time", "reftime"):
+        if c in da.coords:
+            v = np.atleast_1d(da.coords[c].values)[0]
+            return _np_dt_to_iso(v)
+    # Fallback: valid_time[0] − lead[0]
+    if "valid_time" in da.coords:
+        vt0 = np.atleast_1d(da.coords["valid_time"].values)[0]
+        _, leads = find_lead_values(da)
+        ref = np.datetime64(vt0) - np.timedelta64(int(leads[0].total_seconds()), "s")
+        return _np_dt_to_iso(ref)
+    raise RuntimeError(f"ref_time coord nicht gefunden; coords={list(da.coords)}")
 
 
 # ── Payload bauen ─────────────────────────────────────────────────────────────
@@ -331,15 +329,18 @@ def main() -> int:
     ingest_token = require_env("FORECAST_INGEST_TOKEN")
     points = load_points()
 
-    ref_iso = detect_latest_run()
-    if not ref_iso:
+    ref_spec = detect_latest_run()   # "latest" oder REFERENCE_DATETIME-Override
+    if not ref_spec:
         log.error("Kein verfügbarer ICON-CH2-Lauf gefunden")
         heartbeat("failed")
         return 1
 
     horizons = [timedelta(hours=h) for h in range(0, HORIZON_HOURS + 1, STEP_HOURS)]
-    log.info("Fetching %d variables × %d lead-times for run %s",
-             len(VARIABLES), len(horizons), ref_iso)
+    log.info("Fetching %d variables × %d lead-times (ref=%s)",
+             len(VARIABLES), len(horizons), ref_spec)
+
+    # Konkreter Lauf: bei Override sofort bekannt, bei "latest" nach dem 1. Fetch.
+    model_run_iso = None if ref_spec == "latest" else ref_spec
 
     # 1) Mesh + KDTree aus der ersten Variable
     from scipy.spatial import cKDTree
@@ -350,7 +351,11 @@ def main() -> int:
     first = True
     try:
         for var in VARIABLES:
-            da = fetch_variable(var, ref_iso, horizons, first)
+            # 1. Iteration ggf. mit "latest"; danach konkreten Lauf verwenden (konsistent).
+            da = fetch_variable(var, model_run_iso or ref_spec, horizons, first)
+            if model_run_iso is None:
+                model_run_iso = extract_ref_time(da)
+                log.info("Konkreter Lauf aufgelöst: %s", model_run_iso)
             if cell_indices is None:
                 lon, lat = find_lonlat(da)
                 ncells = lon.size
@@ -367,7 +372,7 @@ def main() -> int:
         # 2) Konstantes HSURF (Lead 0)
         hsurf_by_point = [None] * len(points)
         for var in CONST_VARIABLES:
-            da = fetch_variable(var, ref_iso, [timedelta(0)], False)
+            da = fetch_variable(var, model_run_iso, [timedelta(0)], False)
             cdim = find_cell_dim(da, ncells)
             vals = extract_series(da, cdim, cell_indices)  # (1, npoints)
             if var == "hsurf":
@@ -377,7 +382,7 @@ def main() -> int:
         heartbeat("failed")
         return 1
 
-    payload = build_payload(points, ref_iso, series_by_var, hsurf_by_point, leads)
+    payload = build_payload(points, model_run_iso, series_by_var, hsurf_by_point, leads)
     log.info("Payload: %d points, %d lead-times", len(payload["points"]), len(leads))
 
     ok = post_payload(ingest_url, ingest_token, payload)
