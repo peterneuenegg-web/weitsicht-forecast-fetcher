@@ -184,27 +184,43 @@ def fetch_variable(var: str, ref_iso: str, horizons: list[timedelta], first: boo
     return da
 
 
+# STAC-Collection der ICON-CH2-Forecasts. Wir lesen daraus den tatsächlich
+# verfügbaren neuesten Lauf, statt reference_datetime zu raten (die Collection
+# stellt i.d.R. nur den neuesten Lauf bereit → Raten scheitert immer).
+STAC_ITEMS_URL = (
+    "https://data.geo.admin.ch/api/stac/v1/collections/"
+    "ch.meteoschweiz.ogd-forecasting-icon-ch2/items?limit=500"
+)
+
+
 def detect_latest_run() -> str | None:
-    """Neuesten verfügbaren Lauf finden: von jetzt in 3-h-Schritten rückwärts probieren."""
+    """
+    Neuesten verfügbaren ICON-CH2-Lauf bestimmen. Liest die tatsächlichen
+    `forecast:reference_datetime`-Werte aus der STAC-Collection und nimmt den
+    grössten (ISO-8601 sortiert lexikografisch = chronologisch). Der zurück-
+    gegebene Wert wird 1:1 an meteodata-lab weitergereicht.
+    """
     override = os.environ.get("REFERENCE_DATETIME", "").strip()
     if override:
         log.info("Using REFERENCE_DATETIME override: %s", override)
         return override
-    now = datetime.now(timezone.utc).replace(minute=0, second=0, microsecond=0)
-    base = now - timedelta(hours=now.hour % 3)
-    Request, Collection, get_from_ogd = _ogd()
-    for i in range(9):  # bis 24 h zurück
-        rt = base - timedelta(hours=3 * i)
-        iso = rt.strftime("%Y-%m-%dT%H:%M:%SZ")
-        try:
-            get_from_ogd(Request(collection=Collection.ICON_CH2, variable="t_2m",
-                                 reference_datetime=iso, perturbed=False,
-                                 horizon=timedelta(0)))
-            log.info("Latest available run: %s", iso)
-            return iso
-        except Exception as e:
-            log.info("  run %s not available (%s)", iso, str(e)[:80])
-    return None
+    try:
+        r = requests.get(STAC_ITEMS_URL, timeout=30)
+        r.raise_for_status()
+        refs = set()
+        for f in r.json().get("features", []):
+            rd = (f.get("properties") or {}).get("forecast:reference_datetime")
+            if rd:
+                refs.add(rd.replace("+00:00", "Z"))
+        if not refs:
+            log.error("STAC lieferte keine reference_datetime")
+            return None
+        latest = max(refs)
+        log.info("Neuester ICON-CH2-Lauf (aus STAC): %s (von %d verschiedenen)", latest, len(refs))
+        return latest
+    except Exception as e:
+        log.error("STAC-Lauf-Erkennung fehlgeschlagen: %s", e)
+        return None
 
 
 # ── Payload bauen ─────────────────────────────────────────────────────────────
