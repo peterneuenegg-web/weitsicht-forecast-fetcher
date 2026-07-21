@@ -1,0 +1,34 @@
+name: generate-points
+
+# Erzeugt points.json GELÄNDE-basiert (HSURF pro SRF-Region × Band). Manuell,
+# selten nötig (Gelände ist statisch). Ergebnis als Artifact — herunterladen,
+# in dieses Repo committen UND nach Weitsicht/config/points.json kopieren.
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate points.json (terrain-based)
+        run: python generate_points.py
+
+      - name: Upload points.json
+        uses: actions/upload-artifact@v4
+        with:
+          name: points-json
+          path: points.json
+          if-no-files-found: error

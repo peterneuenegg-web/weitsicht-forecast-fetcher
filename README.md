@@ -34,12 +34,25 @@ fetch_forecast.py (alle 3 h)                fetch_cams.py (2×/Tag)
 - Payload-Schema = `points[].series[]` (identisch für forecast/cams), siehe
   Weitsicht `api/forecast-ingest.php` / `api/cams-ingest.php`.
 
-## points.json
+## points.json (GELÄNDE-basiert)
 
-`points.json` ist eine **Kopie** von `Weitsicht/config/points.json` (generiert von
-`cron/generate_points.php`). Bei Änderung der Punkt-Config dort → hierher kopieren
-und committen. (Bewusst kopiert statt live geladen: `config/` ist auf dem Server
-web-geblockt, und der Punktsatz ändert sich selten.)
+`points.json` = ~1 Repräsentativpunkt je (SRF-Region × Höhenband), abgeleitet aus
+der realen **Geländehöhe (HSURF)** des ICON-CH2-Meshes: pro Region die Mesh-Zellen
+im Polygon nach Höhe in low/mid/high bucketen, je Band die Median-Höhen-Zelle. So
+bekommt jede Region ihre Bänder aus dem echten Gelände (flächendeckend, keine
+Webcam-Abhängigkeit). Reine Mittelland-Regionen haben ehrlich nur ein Tal-Band.
+
+**Erzeugen / aktualisieren** (selten nötig — Gelände ist statisch):
+1. Actions → **generate-points** → Run workflow.
+2. Fertiges `points.json` als **Artifact** herunterladen.
+3. Hier ins Repo committen **und** nach `Weitsicht/config/points.json` kopieren
+   (auf den Infomaniak-Server hochladen). Beide Kopien müssen identisch sein —
+   der Worker liest die lokale, das PHP-Backend die im `config/`.
+
+Koordinaten + HSURF stammen primär aus dem statischen `horizontal_constants`-File
+(run-unabhängig); Fallback ist HSURF aus dem neuesten Lauf (Step 0).
+(Die frühere webcam-basierte Generierung — `cron/generate_points.php` im
+Weitsicht-Repo — ist damit abgelöst; Webcams sind für Phase 2 reserviert.)
 
 ## Setup
 
