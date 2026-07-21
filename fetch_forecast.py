@@ -46,15 +46,17 @@ logging.basicConfig(
 )
 log = logging.getLogger("weitsicht-forecast")
 
-# ── Parameter (DWD-Namen wie meteodata-lab erwartet) ─────────────────────────
-# Zeitabhängige Vorhersageparameter je Lead-Time.
+# ── Parameter (DWD-Namen) ────────────────────────────────────────────────────
+# WICHTIG: UPPERCASE — die STAC-Search-API filtert case-sensitiv auf
+# forecast:variable ("T_2M" trifft, "t_2m" liefert 0 Ergebnisse; verifiziert
+# 2026-07-21 direkt gegen /search). Interne Dict-Keys bleiben lowercase.
 VARIABLES = [
-    "t_2m", "td_2m", "tot_prec",
-    "u_10m", "v_10m", "vmax_10m",
-    "ceiling", "clcl", "clct", "hzerocl",
+    "T_2M", "TD_2M", "TOT_PREC",
+    "U_10M", "V_10M", "VMAX_10M",
+    "CEILING", "CLCL", "CLCT", "HZEROCL",
 ]
 # Konstante Felder — nur Lead 0 (ändern sich nicht über die Vorhersage).
-CONST_VARIABLES = ["hsurf"]
+CONST_VARIABLES = ["HSURF"]
 
 BAND_LOW_MAX = 900   # < 900 m → low
 BAND_MID_MAX = 1500  # 900..<1500 → mid ; ≥1500 → high
@@ -385,16 +387,17 @@ def main() -> int:
                 log.info("KDTree: %d mesh cells, matched %d points", ncells, len(points))
                 _, leads = find_lead_values(da)
             cdim = find_cell_dim(da, ncells)
-            series_by_var[var] = extract_series(da, cdim, cell_indices)
+            # Key lowercase — build_payload adressiert t_2m/td_2m/… klein.
+            series_by_var[var.lower()] = extract_series(da, cdim, cell_indices)
             first = False
-            log.info("  %s: series %s", var, series_by_var[var].shape)
+            log.info("  %s: series %s", var, series_by_var[var.lower()].shape)
 
         # 2) Konstantes HSURF — existiert nur bei Step 0. Bei einem älteren Lauf ist
         # Step 0 bereits gelöscht → graceful: dann bleiben Fallback-Punkte ohne Band
         # (werden übersprungen), die 157 Webcam-Punkte laufen normal durch.
         hsurf_by_point = [None] * len(points)
         try:
-            da = fetch_variable("hsurf", model_run_iso, [timedelta(0)], False)
+            da = fetch_variable("HSURF", model_run_iso, [timedelta(0)], False)
             cdim = find_cell_dim(da, ncells)
             vals = extract_series(da, cdim, cell_indices)  # (1, npoints)
             hsurf_by_point = [None if np.isnan(vals[0, i]) else float(vals[0, i]) for i in range(len(points))]
