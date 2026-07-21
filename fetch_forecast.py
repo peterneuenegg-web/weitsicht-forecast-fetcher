@@ -184,41 +184,51 @@ def fetch_variable(var: str, ref_iso: str, horizons: list[timedelta], first: boo
     return da
 
 
-def detect_latest_run() -> str | None:
+STAC_ITEMS_URL = (
+    "https://data.geo.admin.ch/api/stac/v1/collections/"
+    "ch.meteoschweiz.ogd-forecasting-icon-ch2/items"
+)
+RUN_MAX_HOURS = 120  # ICON-CH2 Vorhersagehorizont (Step 120 = +120 h)
+
+
+def get_latest_ref() -> str | None:
     """
-    reference_datetime-Spezifikation für meteodata-lab. Default "latest": die Lib
-    löst serverseitig den neuesten Lauf MIT gültigen Assets auf (ein selbst aus der
-    STAC gelesener Lauf kann bereits abgelaufene Assets haben — die Collection rollt
-    ~24 h). Den konkreten Lauf lesen wir nach dem ersten Fetch aus dem DataArray
-    (extract_ref_time) und fixieren ihn für Payload + Folge-Requests.
-    Mit REFERENCE_DATETIME kann ein fixer Lauf erzwungen werden (Backfill/Test).
+    Konkreten neuesten Lauf bestimmen, der das AKTUELLE Zeitfenster abdeckt.
+
+    Die Collection stellt ~24 h bereit und löscht frühe Schritte alter Läufe
+    (deren Gültigkeit in der Vergangenheit liegt). meteodata-labs "latest" scheitert
+    daher, wenn man fixe Lead-Times 0..N verlangt (die frühen Assets fehlen).
+
+    Trick: jeder aktive Lauf hat Schritte mit Gültigkeit in den nächsten Stunden.
+    Wir fragen die STAC nach Items mit valid_time in [jetzt, jetzt+6 h] (der
+    `datetime`-Filter funktioniert, `sortby`/Property-Filter NICHT) und nehmen die
+    grösste `forecast:reference_datetime`. Das ist der neueste real nutzbare Lauf.
     """
     override = os.environ.get("REFERENCE_DATETIME", "").strip()
     if override:
         log.info("Using REFERENCE_DATETIME override: %s", override)
         return override
-    return "latest"
-
-
-def _np_dt_to_iso(v) -> str:
-    """numpy datetime64 → 'YYYY-MM-DDTHH:MM:SSZ' (UTC)."""
-    secs = (np.datetime64(v) - np.datetime64("1970-01-01T00:00:00")) / np.timedelta64(1, "s")
-    return datetime.fromtimestamp(float(secs), tz=timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-
-
-def extract_ref_time(da) -> str:
-    """Konkreten Modelllauf (reference time) aus dem DataArray lesen."""
-    for c in ("ref_time", "forecast_reference_time", "reftime"):
-        if c in da.coords:
-            v = np.atleast_1d(da.coords[c].values)[0]
-            return _np_dt_to_iso(v)
-    # Fallback: valid_time[0] − lead[0]
-    if "valid_time" in da.coords:
-        vt0 = np.atleast_1d(da.coords["valid_time"].values)[0]
-        _, leads = find_lead_values(da)
-        ref = np.datetime64(vt0) - np.timedelta64(int(leads[0].total_seconds()), "s")
-        return _np_dt_to_iso(ref)
-    raise RuntimeError(f"ref_time coord nicht gefunden; coords={list(da.coords)}")
+    now = datetime.now(timezone.utc)
+    start = now.strftime("%Y-%m-%dT%H:%M:%SZ")
+    end = (now + timedelta(hours=6)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    url = f"{STAC_ITEMS_URL}?limit=100&datetime={start}/{end}"
+    try:
+        r = requests.get(url, timeout=30)
+        r.raise_for_status()
+        refs = set()
+        for f in r.json().get("features", []):
+            rd = (f.get("properties") or {}).get("forecast:reference_datetime")
+            if rd:
+                refs.add(rd.replace("+00:00", "Z"))
+        if not refs:
+            log.error("Kein Lauf deckt das aktuelle Zeitfenster ab (%s)", url)
+            return None
+        latest = max(refs)
+        log.info("Neuester nutzbarer Lauf: %s (von %d im Fenster)", latest, len(refs))
+        return latest
+    except Exception as e:
+        log.error("Lauf-Erkennung fehlgeschlagen: %s", e)
+        return None
 
 
 # ── Payload bauen ─────────────────────────────────────────────────────────────
@@ -243,10 +253,13 @@ def build_payload(points, ref_iso, series_by_var, hsurf_by_point, leads):
             td2m = _c(series_by_var["td_2m"][k, i], -273.15) if "td_2m" in series_by_var else None
             # Niederschlag: akkumuliert (mm) + Rate aus Differenz zur Vorstunde
             precip_mm = _v(series_by_var["tot_prec"][k, i]) if "tot_prec" in series_by_var else None
+            # Rate = Zuwachs der akkumulierten Summe zur Vorstunde. Beim ersten
+            # Schritt des Fensters fehlt die Vorstunde (Lauf-Referenz liegt weiter
+            # zurück) → keine Rate erfinden.
             rate = None
-            if precip_mm is not None and "tot_prec" in series_by_var:
-                prev = _v(series_by_var["tot_prec"][k - 1, i]) if k > 0 else 0.0
-                rate = max(0.0, (precip_mm - (prev or 0.0))) / max(1, STEP_HOURS)
+            if k > 0 and precip_mm is not None and "tot_prec" in series_by_var:
+                prev = _v(series_by_var["tot_prec"][k - 1, i]) or 0.0
+                rate = max(0.0, precip_mm - prev) / max(1, STEP_HOURS)
             u = _v(series_by_var["u_10m"][k, i]) if "u_10m" in series_by_var else None
             v = _v(series_by_var["v_10m"][k, i]) if "v_10m" in series_by_var else None
             wind_kmh = wind_dir = None
@@ -329,18 +342,29 @@ def main() -> int:
     ingest_token = require_env("FORECAST_INGEST_TOKEN")
     points = load_points()
 
-    ref_spec = detect_latest_run()   # "latest" oder REFERENCE_DATETIME-Override
-    if not ref_spec:
+    model_run_iso = get_latest_ref()
+    if not model_run_iso:
         log.error("Kein verfügbarer ICON-CH2-Lauf gefunden")
         heartbeat("failed")
         return 1
 
-    horizons = [timedelta(hours=h) for h in range(0, HORIZON_HOURS + 1, STEP_HOURS)]
-    log.info("Fetching %d variables × %d lead-times (ref=%s)",
-             len(VARIABLES), len(horizons), ref_spec)
-
-    # Konkreter Lauf: bei Override sofort bekannt, bei "latest" nach dem 1. Fetch.
-    model_run_iso = None if ref_spec == "latest" else ref_spec
+    # Lead-Time-Fenster relativ zu JETZT: der Lauf kann älter sein, seine frühen
+    # Schritte (Gültigkeit in der Vergangenheit) sind aus dem 24-h-Rolling-Fenster
+    # gelöscht. Wir holen Gültigkeit ab der nächsten vollen Stunde bis +HORIZON_HOURS.
+    ref_dt = datetime.strptime(model_run_iso, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+    now = datetime.now(timezone.utc)
+    start = now.replace(minute=0, second=0, microsecond=0)
+    if start < now:
+        start += timedelta(hours=1)
+    lead_start = max(0, round((start - ref_dt).total_seconds() / 3600))
+    lead_end = min(RUN_MAX_HOURS, lead_start + HORIZON_HOURS)
+    horizons = [timedelta(hours=h) for h in range(lead_start, lead_end + 1, STEP_HOURS)]
+    if not horizons:
+        log.error("Lauf zu alt: lead_start=%d h > Horizont %d h", lead_start, RUN_MAX_HOURS)
+        heartbeat("failed")
+        return 1
+    log.info("Lauf %s | Lead-Fenster +%d..+%d h (%d Schritte) | %d Variablen",
+             model_run_iso, lead_start, lead_end, len(horizons), len(VARIABLES))
 
     # 1) Mesh + KDTree aus der ersten Variable
     from scipy.spatial import cKDTree
@@ -351,11 +375,7 @@ def main() -> int:
     first = True
     try:
         for var in VARIABLES:
-            # 1. Iteration ggf. mit "latest"; danach konkreten Lauf verwenden (konsistent).
-            da = fetch_variable(var, model_run_iso or ref_spec, horizons, first)
-            if model_run_iso is None:
-                model_run_iso = extract_ref_time(da)
-                log.info("Konkreter Lauf aufgelöst: %s", model_run_iso)
+            da = fetch_variable(var, model_run_iso, horizons, first)
             if cell_indices is None:
                 lon, lat = find_lonlat(da)
                 ncells = lon.size
@@ -369,14 +389,19 @@ def main() -> int:
             first = False
             log.info("  %s: series %s", var, series_by_var[var].shape)
 
-        # 2) Konstantes HSURF (Lead 0)
+        # 2) Konstantes HSURF — existiert nur bei Step 0. Bei einem älteren Lauf ist
+        # Step 0 bereits gelöscht → graceful: dann bleiben Fallback-Punkte ohne Band
+        # (werden übersprungen), die 157 Webcam-Punkte laufen normal durch.
         hsurf_by_point = [None] * len(points)
-        for var in CONST_VARIABLES:
-            da = fetch_variable(var, model_run_iso, [timedelta(0)], False)
+        try:
+            da = fetch_variable("hsurf", model_run_iso, [timedelta(0)], False)
             cdim = find_cell_dim(da, ncells)
             vals = extract_series(da, cdim, cell_indices)  # (1, npoints)
-            if var == "hsurf":
-                hsurf_by_point = [None if np.isnan(vals[0, i]) else float(vals[0, i]) for i in range(len(points))]
+            hsurf_by_point = [None if np.isnan(vals[0, i]) else float(vals[0, i]) for i in range(len(points))]
+            log.info("HSURF geladen (Fallback-Punkte bekommen Band)")
+        except Exception as e:
+            log.warning("HSURF nicht verfügbar (Step 0 evtl. abgelaufen): %s — %d Fallback-Punkte ohne Band werden übersprungen",
+                        str(e)[:100], sum(1 for p in points if not p.get("band")))
     except Exception as e:
         log.exception("Fetch/extract failed: %s", e)
         heartbeat("failed")
