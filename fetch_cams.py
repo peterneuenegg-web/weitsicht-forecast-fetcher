@@ -91,7 +91,9 @@ def download_cams(date_str: str, run_time: str, dest: Path) -> bool:
         "leadtime_hour": leadtimes,
         "type": "forecast",
         "area": CH_AREA,
-        "format": "netcdf",
+        # Neue Copernicus-API (CADS/ADS) erwartet data_format; "format" ist
+        # veraltet und kann einen 400er auslösen.
+        "data_format": "netcdf",
     }
     log.info("CAMS request: %s %s leadtimes=%s", date_str, run_time, leadtimes)
     client.retrieve("cams-global-atmospheric-composition-forecasts", request, str(dest))
