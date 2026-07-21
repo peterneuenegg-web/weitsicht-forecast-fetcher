@@ -79,10 +79,10 @@ def latest_cams_run() -> tuple[str, str]:
 
 def download_cams(date_str: str, run_time: str, dest: Path) -> bool:
     import cdsapi
-    client = cdsapi.Client(
-        url=os.environ.get("ADS_URL", "https://ads.atmosphere.copernicus.eu/api"),
-        key=require_env("ADS_API_KEY"),
-    )
+    # Leeres ADS_URL (Secret nicht gesetzt → "" statt fehlend) auf Default fallen
+    # lassen — sonst baut cdsapi eine URL ohne Schema ("https:///…").
+    ads_url = os.environ.get("ADS_URL", "").strip() or "https://ads.atmosphere.copernicus.eu/api"
+    client = cdsapi.Client(url=ads_url, key=require_env("ADS_API_KEY"))
     leadtimes = [str(h) for h in range(0, HORIZON_HOURS + 1, CAMS_STEP_HOURS)]
     request = {
         "variable": [VAR_AOD[0], VAR_DUST[0]],
