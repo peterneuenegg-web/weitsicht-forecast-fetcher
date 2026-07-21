@@ -159,8 +159,8 @@ def build_payload(ds, points, ref_iso):
         series = []
         for k in range(len(steps)):
             vt = ref_dt + timedelta(hours=to_hours(steps[k]))
-            aod = float(np.atleast_1d(sel_aod.values)[k])
-            dust = float(np.atleast_1d(sel_dust.values)[k]) if sel_dust is not None else None
+            aod = float(np.asarray(sel_aod.values).ravel()[k])
+            dust = float(np.asarray(sel_dust.values).ravel()[k]) if sel_dust is not None else None
             series.append({
                 "valid_time": vt.strftime("%Y-%m-%dT%H:%M:%SZ"),
                 "aod550": None if np.isnan(aod) else round(aod, 3),
