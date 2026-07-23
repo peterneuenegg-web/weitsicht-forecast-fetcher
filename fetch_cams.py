@@ -175,9 +175,6 @@ def build_payload(ds, points, ref_iso):
 
 
 def post_payload(url, token, payload) -> bool:
-    import hashlib
-    log.info("Sende Ingest-Token: laenge=%d sha256[0:12]=%s (Server erwartet 5525cc504a0e)",
-             len(token), hashlib.sha256(token.encode()).hexdigest()[:12])
     body = json.dumps(payload, separators=(",", ":")).encode("utf-8")
     headers = {"Content-Type": "application/json", "X-Ingest-Token": token}
     last = ""
